@@ -1,0 +1,25 @@
+[database]
+database_host = localhost
+database_name = movies
+database_port = 5432
+database_username = postgres
+database_password = postrgres
+
+[file_paths]
+input_path = /opt/airflow/data/input
+output_path = /opt/airflow/data/output
+
+[api_keys]
+reddit_secret_key = "your reddit secret key"
+reddit_client_id = "your reddit client id"
+
+[aws]
+aws_access_key_id = "your aws_access_key_id"
+aws_secret_access_key= "your aws_secret_access_key"
+aws_region = ap-southeast-1
+aws_bucket_name = "your aws_bucket_name"
+
+[etl_settings]
+batch_size = 100
+error_handling = abort
+log_level = info

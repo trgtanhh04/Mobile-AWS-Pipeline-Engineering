@@ -1,0 +1,641 @@
+2025-04-28 10:53:59,220 - __main__ - INFO - Spark session initialized.
+2025-04-28 10:54:02,414 - __main__ - ERROR - Failed to connect to Kafka: Failed to find data source: kafka. Please deploy the application as per the deployment section of Structured Streaming + Kafka Integration Guide.
+2025-04-28 10:54:02,479 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 10:57:21,627 - __main__ - INFO - Spark session initialized.
+2025-04-28 10:57:25,216 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 10:57:25,951 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 10:57:29,175 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 10:59:27,196 - __main__ - INFO - Spark session initialized.
+2025-04-28 10:59:30,931 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 10:59:31,552 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 11:03:21,188 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-28 11:03:21,191 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:03:21,191 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:03:21,194 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-28 11:03:21,199 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:03:21,199 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:03:21,200 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:03:21,272 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:30:32,991 - __main__ - INFO - Spark session initialized.
+2025-04-28 11:30:36,827 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 11:30:37,479 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 11:34:11,837 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-28 11:34:11,840 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:34:11,841 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:34:11,843 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-28 11:34:11,845 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:34:11,845 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:34:11,846 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:34:11,931 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:34:21,150 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-28 11:34:21,150 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-04-28 11:34:21,151 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-28 11:34:21,255 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-04-28 11:34:21,255 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-04-28 11:34:21,256 - kafka.consumer.subscription_state - INFO - Updating subscribed topics to: ('mobile_topic',)
+2025-04-28 11:34:21,256 - __main__ - INFO - Started consuming messages from Kafka topic: mobile_topic
+2025-04-28 11:34:21,259 - kafka.cluster - INFO - Group coordinator for test-group is BrokerMetadata(nodeId='coordinator-1', host='localhost', port=29092, rack=None)
+2025-04-28 11:34:21,259 - kafka.coordinator - INFO - Discovered coordinator coordinator-1 for group test-group
+2025-04-28 11:34:21,260 - kafka.coordinator - INFO - Starting new heartbeat thread
+2025-04-28 11:34:21,260 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions set() for group test-group
+2025-04-28 11:34:21,261 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-28 11:34:21,262 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-28 11:34:21,262 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-28 11:34:21,363 - kafka.coordinator - INFO - (Re-)joining group test-group
+2025-04-28 11:34:24,368 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2025-04-28 11:34:24,369 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-28 11:34:24,370 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-28 11:34:24,374 - kafka.coordinator - INFO - Successfully joined group test-group with generation 1
+2025-04-28 11:34:24,375 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='mobile_topic', partition=0)]
+2025-04-28 11:34:24,375 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='mobile_topic', partition=0)} for group test-group
+2025-04-28 11:34:24,384 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Samsung Galaxy S22 c\u0169 Ch\u00ednh h\u00e3ng (Snapdragon 8 Gen 1 - 99%)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Samsung C\u0169", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["H\u1ed3ng", "8-128GB", "5.450.000 \u20ab", "11.490.000\u20ab"], ["H\u1ed3ng", "8-256GB", "5.750.000 \u20ab", "11.490.000\u20ab"], ["T\u00edm", "8-128GB", "5.450.000 \u20ab", "11.490.000\u20ab"], ["T\u00edm", "8-256GB", "5.750.000 \u20ab", "11.490.000\u20ab"], ["Xanh", "8-128GB", "5.550.000 \u20ab", "11.490.000\u20ab"], ["Xanh", "8-256GB", "5.750.000 \u20ab", "11.490.000\u20ab"], ["Tr\u1eafng", "8-128GB", "5.550.000 \u20ab", "11.490.000\u20ab"], ["Tr\u1eafng", "8-256GB", "5.750.000 \u20ab", "11.490.000\u20ab"], ["\u0110en", "8-128GB", "5.550.000 \u20ab", "11.490.000\u20ab"], ["\u0110en", "8-256GB", "5.750.000 \u20ab", "11.490.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 6 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"Dynamic AMOLED 2X, 120Hz, HDR10+, 1300 nits (peak)\\n6.1 inches, Full HD+ (1080 x 2340 pixels)\\nT\u1ef7 l\u1ec7 19.5:9; m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~425 ppi\\nCorning Gorilla Glass Victus+\\nAlways-on Display\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 12, One UI 4.0\\n\u0110\u01b0\u1ee3c l\u00ean Android 14, One UI 6.1\\n(H\u1ed7 tr\u1ee3 c\u1eadp nh\u1eadt t\u1ed1i \u0111a 4 b\u1ea3n Android ch\u00ednh)\", \"Camera sau:\": \"50 MP, f/1.8, 23mm (g\u00f3c r\u1ed9ng), Dual Pixel PDAF, OIS\\n10 MP, f/2.4, 70mm (tele), 1/3.94\\\", 1.0\u00b5m, PDAF, OIS, zoom quang 3x\\n12 MP, f/2.2, 13mm, 120\u02da (g\u00f3c si\u00eau r\u1ed9ng), Super Steady video\\nQuay phim: 8K@24fps, 4K@30/60fps, 1080p@30/60/240fps, 720p@960fps, HDR10+, stereo sound rec., gyro-EIS\", \"Camera tr\u01b0\u1edbc:\": \"10 MP, f/2.2, 26mm (wide), Dual Pixel PDAF\\nDual video call, Auto-HDR\\nQuay phim: 4K@30/60fps, 1080p@30fps\", \"CPU:\": \"- Ch\u00e2u \u00c2u: Exynos 2200 (4 nm)\\n8 nh\u00e2n (1x2.8 GHz & 3x2.50 GHz & 4x1.8 GHz)\\nGPU: Xclipse 920\\n- Qu\u1ed1c t\u1ebf: Qualcomm SM8450 Snapdragon 8 Gen 1 (4 nm)\\n8 nh\u00e2n (1x3.00 GHz & 3x2.50 GHz & 4x1.80 GHz)\\nGPU: Adreno 730\", \"RAM:\": \"8GB\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 3.1\", \"Th\u1ebb SIM:\": \"Nano SIM v\u00e0 eSIM\\nHo\u1eb7c 2 Nano SIM v\u00e0 eSIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Ion 3700 mAh\\nS\u1ea1c nhanh 25W\\nS\u1ea1c nhanh kh\u00f4ng d\u00e2y (Qi/PMA) 15W\\nS\u1ea1c ng\u01b0\u1ee3c kh\u00f4ng d\u00e2y 4.5W\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u00f4m b\u1ecdc th\u00e9p bo cong\\n2 m\u1eb7t k\u00ednh Gorilla Glass Victus+\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP68\\nC\u1ea3m bi\u1ebfn v\u00e2n tay si\u00eau \u00e2m d\u01b0\u1edbi m\u00e0n h\u00ecnh\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "82", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/samsung-galaxy-s22-cu.html"}
+2025-04-28 11:34:24,384 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Note 13 Pro 5G (Snapdragon 7s Gen 2)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["T\u00edm", "8-128GB", "4.150.000 \u20ab", "5.950.000\u20ab"], ["T\u00edm", "8-256GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["T\u00edm", "12-256GB", "4.950.000 \u20ab", "5.950.000\u20ab"], ["Xanh \u00f4liu", "8-128GB", "4.150.000 \u20ab", "5.950.000\u20ab"], ["Xanh \u00f4liu", "8-256GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["Xanh \u00f4liu", "12-256GB", "4.950.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "8-128GB", "4.250.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "8-256GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "12-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["\u0110\u1ecf", "8-128GB", "4.250.000 \u20ab", "5.950.000\u20ab"], ["\u0110\u1ecf", "8-256GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["\u0110\u1ecf", "12-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "8-128GB", "4.250.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "8-256GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "12-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "8-128GB", "4.250.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "8-256GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "12-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 68 t\u1ef7 m\u00e0u, 120Hz, Dolby Vision, 500 nits (typ), 1200 nits (HBM), 1800 nits (peak)\\n6.67 inches, 1.5K (1220 x 2712 pixels)\\nT\u1ef7 l\u1ec7 20:9; M\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~446 ppi\\nCorning Gorilla Glass Victus\\nAlways-on Display\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 13, MIUI 14\\n\u0110\u01b0\u1ee3c l\u00ean Android 14, HyperOS\\n(H\u1ed7 tr\u1ee3 n\u00e2ng c\u1ea5p t\u1ed1i \u0111a 3 b\u1ea3n Android ch\u00ednh)\", \"Camera sau:\": \"200 MP, f/1.7, 23mm (g\u00f3c r\u1ed9ng), PDAF \u0111a h\u01b0\u1edbng, OIS\\n8 MP, f/2.2, 118\u02da (g\u00f3c si\u00eau r\u1ed9ng)\\n2 MP, f/2.4 (macro)\\nQuay phim: 4K@30fps, 1080p@30/60/120fps, gyro-EIS\", \"Camera tr\u01b0\u1edbc:\": \"16 MP f/2.4 (g\u00f3c r\u1ed9ng), HDR, panorama\\nQuay phim: 1080p@30/60fps\", \"CPU:\": \"Qualcomm SM7435-AB Snapdragon 7s Gen 2 (4 nm)\\n8 nh\u00e2n (4x2.40 GHz & 4x1.95 GHz)\\nGPU: Adreno 710\", \"RAM:\": \"8-16GB\", \"B\u1ed9 nh\u1edb trong:\": \"128-512GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Po 5100 mAh\\nS\u1ea1c nhanh 67W\\nS\u1ea1c 100% trong 44 ph (QC)\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u1eb7t l\u01b0ng k\u00ednh\\nK\u00ednh tr\u01b0\u1edbc Corning Gorilla Glass Victus\\nC\u1ea3m bi\u1ebfn v\u00e2n tay d\u01b0\u1edbi m\u00e0n h\u00ecnh\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP54\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "1161", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-13-pro-cau-hinh-manh.html"}
+2025-04-28 11:34:24,384 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Note 12 5G (C\u00f3 ti\u1ebfng Vi\u1ec7t, Snapdragon 4 Gen 1)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh", "4-128GB", "2.550.000 \u20ab", "3.950.000\u20ab"], ["Xanh", "6-128GB", "2.750.000 \u20ab", "3.950.000\u20ab"], ["Xanh", "8-128GB", "2.950.000 \u20ab", "3.950.000\u20ab"], ["Tr\u1eafng", "4-128GB", "2.550.000 \u20ab", "3.950.000\u20ab"], ["Tr\u1eafng", "6-128GB", "2.750.000 \u20ab", "3.950.000\u20ab"], ["Tr\u1eafng", "8-128GB", "2.950.000 \u20ab", "3.950.000\u20ab"], ["\u0110en", "4-128GB", "2.550.000 \u20ab", "3.950.000\u20ab"], ["\u0110en", "6-128GB", "2.750.000 \u20ab", "3.950.000\u20ab"], ["\u0110en", "8-128GB", "2.950.000 \u20ab", "3.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"Samsung GOLED, 120Hz, 1200 nits (peak)\\n6.67 inches, Full HD+ (1080 x 2400 pixels)\\nT\u1ef7 l\u1ec7 20:9, m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh 395 ppi\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 12, MIUI 13\\n\u0110\u01b0\u1ee3c l\u00ean HyperOS\", \"Camera sau:\": \"48 MP (g\u00f3c r\u1ed9ng), PDAF\\n2 MP, f/2.4 (\u0111\u1ed9 s\u00e2u)\\nQuay phim: 1080p@30/60fps\", \"Camera tr\u01b0\u1edbc:\": \"8MP, f/2.0 (g\u00f3c r\u1ed9ng), HDR\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm SM4375 Snapdragon 4 Gen 1 (6 nm)\\n8 nh\u00e2n (2x2.0 GHz & 6x1.8 GHz)\\nGPU: Adreno 619\", \"RAM:\": \"4-8GB, LPDDR4X\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Po 5000 mAh\\nS\u1ea1c nhanh 33W\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a bo cong, m\u1eb7t l\u01b0ng nh\u1ef1a cong\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP53\\nC\u1ea3m bi\u1ebfn v\u00e2n tay c\u1ea1nh b\u00ean\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "12", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-12-5g-snapdragon-4-gen-1.html"}
+2025-04-28 11:34:24,384 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Note 13 Ch\u00ednh h\u00e3ng DGW (Snapdragon 685)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["V\u00e0ng", "6-128GB", "3.650.000 \u20ab", "4.850.000\u20ab"], ["V\u00e0ng", "8-128GB", "3.950.000 \u20ab", "4.850.000\u20ab"], ["Xanh l\u00e1", "6-128GB", "3.650.000 \u20ab", "4.850.000\u20ab"], ["Xanh l\u00e1", "8-128GB", "3.950.000 \u20ab", "4.850.000\u20ab"], ["\u0110en", "6-128GB", "3.650.000 \u20ab", "4.850.000\u20ab"], ["\u0110en", "8-128GB", "3.950.000 \u20ab", "4.850.000\u20ab"], ["Xanh d\u01b0\u01a1ng", "6-128GB", "3.650.000 \u20ab", "4.850.000\u20ab"], ["Xanh d\u01b0\u01a1ng", "8-128GB", "3.950.000 \u20ab", "4.850.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 120Hz, 1800 nits (peak)\\n6.67 inches, Full HD+ (1080 x 2400 pixels)\\nT\u1ef7 l\u1ec7 20:9, m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~395 ppi\\nCorning Gorilla Glass 3\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 13, \u0111\u01b0\u1ee3c l\u00ean Android 14, HyperOS\\n(H\u1ed7 tr\u1ee3 c\u1eadp nh\u1ea5t 3 b\u1ea3n Android ch\u00ednh)\", \"Camera sau:\": \"108 MP, f/1.8, 24mm (g\u00f3c r\u1ed9ng), PDAF, OIS\\n8 MP, f/2.2, 120\u02da (g\u00f3c si\u00eau r\u1ed9ng)\\n2 MP, f/2.4 (macro)\\nQuay phim: 1080p@30fps, 720p@30fps\", \"Camera tr\u01b0\u1edbc:\": \"16 MP, f/2.4 (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm SM6225 Snapdragon 685 (6 nm)\\n8 nh\u00e2n (4x2.8 GHz & 4x1.8 GHz)\\nGPU: Adreno 610\", \"RAM:\": \"6-8GB\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Po 5000 mAh\\nS\u1ea1c nhanh 33W\\nS\u1ea1c 100% trong 70 ph (QC)\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a, m\u1eb7t l\u01b0ng nh\u1ef1a\\nVu\u00f4ng v\u1ee9c, th\u1eddi trang\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP54\\nM\u1edf kho\u00e1 v\u00e2n tay d\u01b0\u1edbi m\u00e0n h\u00ecnh\\nM\u1edf kho\u00e1 khu\u00f4n m\u1eb7t\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "21", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-13-4g.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Note 12 Discovery Edition", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["\u0110en", "8-256GB", "3.450.000 \u20ab", "4.950.000\u20ab"], ["Tr\u1eafng", "8-256GB", "3.450.000 \u20ab", "4.950.000\u20ab"], ["Xanh", "8-256GB", "3.450.000 \u20ab", "4.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"OLED, 1 t\u1ef7 m\u00e0u, 120Hz, Dolby Vision, HDR10+\\n6.67 inches, Full HD+ (1080 x 2400 pixels)\\nC\u1ea3m bi\u1ebfn v\u00e2n tay d\u01b0\u1edbi m\u00e0n h\u00ecnh\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 12, MIUI 13\", \"Camera sau:\": \"200 MP, f/1.7, (g\u00f3c r\u1ed9ng), PDAF, OIS\\n8 MP, (g\u00f3c si\u00eau r\u1ed9ng)\\n2 MP, f/2.4, (macro)\\nQuay phim: 4K, 1080p\", \"Camera tr\u01b0\u1edbc:\": \"16 MP, f/2.5, (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Dimensity 1080 (6nm)\\n8 nh\u00e2n (1x2.6GHz & 3x2.2GHz & 3x1.8GHz)\\nGPU: Mali-G68\", \"RAM:\": \"8GB\", \"B\u1ed9 nh\u1edb trong:\": \"256GB\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Po 4300 mAh\\nS\u1ea1c nhanh 210W, 100% trong 9 ph\u00fat (Qu\u1ea3ng c\u00e1o)\", \"Thi\u1ebft k\u1ebf:\": \"Thanh + C\u1ea3m \u1ee9ng\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "29", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-12-discovery-edition.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Vivo iQOO Z9x 5G (pin 6000mAh)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Vivo", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh", "8-128GB", "3.350.000 \u20ab", "4.950.000\u20ab"], ["Xanh", "8-256GB", "3.750.000 \u20ab", "4.950.000\u20ab"], ["Xanh", "12-256GB", "4.150.000 \u20ab", "4.950.000\u20ab"], ["Tr\u1eafng", "8-128GB", "3.350.000 \u20ab", "4.950.000\u20ab"], ["Tr\u1eafng", "8-256GB", "3.750.000 \u20ab", "4.950.000\u20ab"], ["Tr\u1eafng", "12-256GB", "4.150.000 \u20ab", "4.950.000\u20ab"], ["\u0110en", "8-128GB", "3.350.000 \u20ab", "4.950.000\u20ab"], ["\u0110en", "8-256GB", "3.750.000 \u20ab", "4.950.000\u20ab"], ["\u0110en", "12-256GB", "4.150.000 \u20ab", "4.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"IPS LCD, 120Hz, 1000 nits (peak)\\n6.72 inches, Full HD+ (1080 x 2408 pixels)\\nT\u1ef7 l\u1ec7 20:9 , m\u1eadt \u0111\u1ed9 ph\u00e2n gi\u1ea3i ~393 ppi\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 14, OriginOS 4\", \"Camera sau:\": \"50 MP, f/1.8 (g\u00f3c r\u1ed9ng), PDAF\\n2 MP, f/2.4 (\u0111\u1ed9 s\u00e2u)\\nQuay phim: 4K, 1080p, gyro-EIS\", \"Camera tr\u01b0\u1edbc:\": \"8 MP, f/2.1 (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm SM6450 Snapdragon 6 Gen 1 (4 nm)\\n8 nh\u00e2n (4x2.2 GHz & 4x1.8 GHz)\\nGPU: Adreno 710\", \"RAM:\": \"8-12GB, LPDDR4X\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"6000 mAh\\nS\u1ea1c nhanh 44W\\nH\u1ed7 tr\u1ee3 s\u1ea1c ng\u01b0\u1ee3c c\u00f3 d\u00e2y\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u0103t l\u01b0ng nh\u1ef1a ph\u1eb3ng; M\u00e0n h\u00ecnh ph\u1eb3ng\\nKh\u00e1ng n\u01b0\u1edbc, ch\u1ed1ng b\u1ee5i IP64\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "53", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/vivo-iqoo-z9x-5g.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i iPhone 11 c\u0169 (Ch\u00ednh h\u00e3ng, R\u1ebb h\u01a1n 36%)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "iPhone C\u0169 99%", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["V\u00e0ng", "64GB", "5.250.000 \u20ab", "7.950.000\u20ab"], ["V\u00e0ng", "128GB", "5.650.000 \u20ab", "7.950.000\u20ab"], ["V\u00e0ng", "256GB", "5.850.000 \u20ab", "7.950.000\u20ab"], ["\u0110\u1ecf", "64GB", "5.250.000 \u20ab", "7.950.000\u20ab"], ["\u0110\u1ecf", "128GB", "5.650.000 \u20ab", "7.950.000\u20ab"], ["\u0110\u1ecf", "256GB", "5.850.000 \u20ab", "7.950.000\u20ab"], ["\u0110en", "64GB", "5.350.000 \u20ab", "7.950.000\u20ab"], ["\u0110en", "128GB", "5.650.000 \u20ab", "7.950.000\u20ab"], ["\u0110en", "256GB", "5.950.000 \u20ab", "7.950.000\u20ab"], ["Xanh", "64GB", "5.350.000 \u20ab", "7.950.000\u20ab"], ["Xanh", "128GB", "5.650.000 \u20ab", "7.950.000\u20ab"], ["Xanh", "256GB", "5.950.000 \u20ab", "7.950.000\u20ab"], ["T\u00edm", "64GB", "5.350.000 \u20ab", "7.950.000\u20ab"], ["T\u00edm", "128GB", "5.650.000 \u20ab", "7.950.000\u20ab"], ["T\u00edm", "256GB", "5.950.000 \u20ab", "7.950.000\u20ab"], ["Tr\u1eafng", "64GB", "5.350.000 \u20ab", "7.950.000\u20ab"], ["Tr\u1eafng", "128GB", "5.650.000 \u20ab", "7.950.000\u20ab"], ["Tr\u1eafng", "256GB", "5.950.000 \u20ab", "7.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"Liquid Retina IPS LCD, 625 nits (typ)\\n6.1 inches, HD+ (828 x 1792 pixels), t\u1ef7 l\u1ec7 19.5:9\\nK\u00ednh ch\u1ed1ng x\u01b0\u1edbc\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"iOS 13 (g\u1ed1c)\\n\u0110\u01b0\u1ee3c l\u00ean iOS 18\", \"Camera sau:\": \"12 MP, f/1.8, 26mm (g\u00f3c r\u1ed9ng), dual pixel PDAF, OIS\\n12 MP, f/2.4, 120\u02da, 13mm (g\u00f3c si\u00eau r\u1ed9ng)\\nQuay phim: 4K@24/30/60fps, 1080p@30/60/120/240fps, HDR, stereo sound rec.\", \"Camera tr\u01b0\u1edbc:\": \"12 MP, f/2.2, 23mm (g\u00f3c r\u1ed9ng), HDR\\nSL 3D, (\u0111o chi\u1ec1u s\u00e2u)\\nQuay phim: 4K@24/30/60fps, 1080p@30/60/120fps, gyro-EIS\", \"CPU:\": \"Apple A13 Bionic (7 nm+)\\n6 nh\u00e2n (2x2.65 GHz + 4x1.8 GHz)\\nGPU: Apple GPU (4-core graphics)\", \"RAM:\": \"4GB\", \"B\u1ed9 nh\u1edb trong:\": \"64/128/256GB NVMe\\nTh\u1ebb nh\u1edb: kh\u00f4ng\", \"Th\u1ebb SIM:\": \"2 SIM ho\u1eb7c 1 SIM, Nano-SIM ho\u1eb7c E-SIM, 2 SIM (Nano-SIM, dual stand-by) b\u1ea3n Trung Qu\u1ed1c\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Ion 3110 mAh\\nS\u1ea1c nhanh 18W, 50% pin trong 30ph (qu\u1ea3ng c\u00e1o)\\nUSB Power Delivery 2.0\\nS\u1ea1c kh\u00f4ng d\u00e2y Qi\", \"Thi\u1ebft k\u1ebf:\": \"Thi\u1ebft k\u1ebf nguy\u00ean 2 m\u1eb7t k\u00ednh\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "990", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/apple/iphone-11-cu.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Vivo iQOO Z9 5G (Snapdragon 7 Gen 3)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Vivo", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh", "8-128GB", "4.450.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "8-256GB", "4.750.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "12-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "8-128GB", "4.550.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "8-256GB", "4.750.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "12-256GB", "5.150.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "8-128GB", "4.550.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "8-256GB", "4.750.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "12-256GB", "5.150.000 \u20ab", "5.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 1 t\u1ef7 m\u00e0u, 144Hz, HDR, 4500 nits (t\u1ed1i \u0111a)\\n6.78 inches, 1.5K (1260 x 2800 pixels)\\nT\u1ef7 l\u1ec7 20:9, m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~453 ppi\\nAlways-on Display\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 14, OriginOS 4\", \"Camera sau:\": \"50 MP, f/1.8 (g\u00f3c r\u1ed9ng), PDAF\\n2 MP, f/2.4 (\u0111\u1ed9 s\u00e2u)\\nQuay phim: 4K@30fps, 1080p, gyro-EIS\", \"Camera tr\u01b0\u1edbc:\": \"16 MP, f/2.5 (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm Snapdragon 7 Gen 3 (4 nm)\\n8 nh\u00e2n (1x2.63 GHz & 4x2.4 GHz & 3x1.8 GHz)\\nGPU: Adreno 720\", \"RAM:\": \"8-12GB, LPDDR4X\", \"B\u1ed9 nh\u1edb trong:\": \"128-512GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"6000 mAh\\nS\u1ea1c nhanh 80W\\nS\u1ea1c ng\u01b0\u1ee3c 7.5W (d\u00e2y)\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u1eb7t l\u01b0ng nh\u1ef1a cong nh\u1eb9\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP64\\nC\u1ea3m bi\u1ebfn v\u00e2n tay d\u01b0\u1edbi m\u00e0n h\u00ecnh\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "183", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/vivo-iqoo-z9-5g-snapdragon-7-gen-3.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Note 13 5G China (Dimensity 6080)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh", "6-128GB", "2.950.000 \u20ab", "4.950.000\u20ab"], ["Xanh", "8-128GB", "3.150.000 \u20ab", "4.950.000\u20ab"], ["Xanh", "8-256GB", "3.450.000 \u20ab", "4.950.000\u20ab"], ["Tr\u1eafng", "6-128GB", "3.050.000 \u20ab", "4.950.000\u20ab"], ["Tr\u1eafng", "8-128GB", "3.150.000 \u20ab", "4.950.000\u20ab"], ["Tr\u1eafng", "8-256GB", "3.550.000 \u20ab", "4.950.000\u20ab"], ["\u0110en", "6-128GB", "3.050.000 \u20ab", "4.950.000\u20ab"], ["\u0110en", "8-128GB", "3.150.000 \u20ab", "4.950.000\u20ab"], ["\u0110en", "8-256GB", "3.550.000 \u20ab", "4.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 1 t\u1ef7 m\u00e0u, 120Hz, 1000 nits (t\u1ed1i \u0111a)\\n6.67 inches, Full HD+ (1080 x 2400 pixels)\\nT\u1ef7 l\u1ec7 20:9; M\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~395 ppi\\nCorning Gorilla Glass 5\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 13, MIUI 14\", \"Camera sau:\": \"108 MP, f/1.7 (g\u00f3c r\u1ed9ng), PDAF\\n2 MP, f/2.4 (\u0111\u1ed9 s\u00e2u)\\nQuay phim: 1080p@30fps\", \"Camera tr\u01b0\u1edbc:\": \"16 MP (g\u00f3c r\u1ed9ng), HDR\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Mediatek Dimensity 6080 (6 nm)\\n8 nh\u00e2n (2x2.4 GHz & 6x2.0 GHz)\\nGPU: Mali-G57 MC2\", \"RAM:\": \"6-12GB\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Po 5000 mAh\\nS\u1ea1c nhanh 33W\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u1eb7t l\u01b0ng nh\u1ef1a\\nK\u00ednh tr\u01b0\u1edbc Corning Gorilla Glass 5\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP54\"}", "\u0110\u00e1nh gi\u00e1": "4.9/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "107", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-13-gia-re.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Note 14 Pro 5G (Dimensity 7300 Ultra)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["T\u00edm", "8-128GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["T\u00edm", "8-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["T\u00edm", "12-256GB", "5.650.000 \u20ab", "5.950.000\u20ab"], ["T\u00edm", "12-512GB", "6.150.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "8-128GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "8-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "12-256GB", "5.650.000 \u20ab", "5.950.000\u20ab"], ["\u0110en", "12-512GB", "6.150.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "8-128GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "8-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "12-256GB", "5.650.000 \u20ab", "5.950.000\u20ab"], ["Tr\u1eafng", "12-512GB", "6.150.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "8-128GB", "4.650.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "8-256GB", "5.050.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "12-256GB", "5.650.000 \u20ab", "5.950.000\u20ab"], ["Xanh", "12-512GB", "6.150.000 \u20ab", "5.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 68 t\u1ef7 m\u00e0u, 120Hz, HDR10+, Dolby Vision, 3000 nits (peak)\\n6.67 inches, 1.5K (1220 x 2712 pixels)\\nT\u1ef7 l\u1ec7 20:9, m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~446 ppi\\nAlways-on Display\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Andrroid 14, HyperOS\\nH\u1ed7 tr\u1ee3 c\u1eadp nh\u1eadt 3 b\u1ea3n Android ch\u00ednh\", \"Camera sau:\": \"50 MP, f/1.5 (g\u00f3c r\u1ed9ng), 1/1.96\\\", 0.8\u00b5m, PDAF, OIS\\n8 MP, f/2.2, 120\u02da (g\u00f3c si\u00eau r\u1ed9ng), 1/4.0\\\", 1.12\u00b5m\\n2 MP, f/2.4 (macro)\\nQuay phim: 4K@24/30fps, 1080p@30/60/120fps, gyro-EIS, OIS\", \"Camera tr\u01b0\u1edbc:\": \"20 MP, f/2.2 (g\u00f3c r\u1ed9ng), 1/4.0\\\"\\nHDR, panorama\\nQuay phim: 1080p@30/60fps\", \"CPU:\": \"MediaTek Dimensity 7300 Ultra (4 nm)\\n8 nh\u00e2n (4x2.5 GHz & 4x2.0 GHz)\\nGPU: Mali-G615 MC2\", \"RAM:\": \"8-12GB, LPDDR4X\\n(4266Mbps)\", \"B\u1ed9 nh\u1edb trong:\": \"128-512GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"5500 mAh\\nS\u1ea1c nhanh 45W, PD3.0\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a bo cong\\nM\u1eb7t l\u01b0ng nh\u1ef1a bo cong gi\u1ea3 k\u00ednh/ gi\u1ea3 da\\nM\u00e0n h\u00ecnh cong + C\u1ea3m bi\u1ebfn v\u00e2n tay d\u01b0\u1edbi m\u00e0n h\u00ecnh\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP68/IP69K\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "111", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-14-pro-5g.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "Kh\u00f4ng c\u00f3 t\u00ean s\u1ea3n ph\u1ea9m", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "iPhone C\u0169 99%", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["\u0110en", "64GB", "5.950.000 \u20ab", "8.950.000\u20ab"], ["\u0110en", "256GB", "6.650.000 \u20ab", "8.950.000\u20ab"], ["\u0110en", "512GB", "7.150.000 \u20ab", "8.950.000\u20ab"], ["Tr\u1eafng", "64GB", "6.050.000 \u20ab", "8.950.000\u20ab"], ["Tr\u1eafng", "256GB", "6.650.000 \u20ab", "8.950.000\u20ab"], ["Tr\u1eafng", "512GB", "7.250.000 \u20ab", "8.950.000\u20ab"], ["Xanh", "64GB", "6.150.000 \u20ab", "8.950.000\u20ab"], ["Xanh", "256GB", "6.650.000 \u20ab", "8.950.000\u20ab"], ["Xanh", "512GB", "7.350.000 \u20ab", "8.950.000\u20ab"], ["V\u00e0ng \u0110\u1ed3ng", "64GB", "6.150.000 \u20ab", "8.950.000\u20ab"], ["V\u00e0ng \u0110\u1ed3ng", "256GB", "6.650.000 \u20ab", "8.950.000\u20ab"], ["V\u00e0ng \u0110\u1ed3ng", "512GB", "7.350.000 \u20ab", "8.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "Kh\u00f4ng c\u00f3 th\u00f4ng tin b\u1ea3o h\u00e0nh", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"Kh\u00f4ng c\u00f3 th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt\": \"N/A\"}", "\u0110\u00e1nh gi\u00e1": "Kh\u00f4ng c\u00f3 \u0111\u00e1nh gi\u00e1", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "Kh\u00f4ng c\u00f3 th\u00f4ng tin \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/apple/iphone-11-pro-cu.html"}
+2025-04-28 11:34:24,385 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Turbo 3 5G (Snapdragon 8s Gen 3)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh", "8-256GB", "5.250.000 \u20ab", "6.950.000\u20ab"], ["Xanh", "12-256GB", "5.750.000 \u20ab", "6.950.000\u20ab"], ["Xanh", "12-512GB", "6.050.000 \u20ab", "6.950.000\u20ab"], ["Xanh", "16-256GB", "6.250.000 \u20ab", "6.950.000\u20ab"], ["Titanium", "8-256GB", "5.350.000 \u20ab", "6.950.000\u20ab"], ["Titanium", "12-256GB", "5.750.000 \u20ab", "6.950.000\u20ab"], ["Titanium", "12-512GB", "6.150.000 \u20ab", "6.950.000\u20ab"], ["Titanium", "16-256GB", "6.250.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "8-256GB", "5.350.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "12-256GB", "5.750.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "12-512GB", "6.150.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "16-256GB", "6.250.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "8-256GB", "5.350.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "12-256GB", "5.750.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "12-512GB", "6.150.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "16-256GB", "6.250.000 \u20ab", "6.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 68 t\u1ef7 m\u00e0u, 120Hz, Dolby Vision, HDR10+, 2400 nits (t\u1ed1i \u0111a)\\n6.67 inches, 1.5K (1220 x 2712 pixels)\\nCorning Gorilla Glass Victus\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 14, HyperOS\", \"Camera sau:\": \"50 MP, f/1.6 (g\u00f3c r\u1ed9ng), PDAF, OIS\\n8 MP (g\u00f3c si\u00eau r\u1ed9ng)\\nQuay phim: 4K@30/60fps, 1080p@30/60/120/240fps, gyro-EIS\", \"Camera tr\u01b0\u1edbc:\": \"20 MP, f/2.2 (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30/60fps\", \"CPU:\": \"Qualcomm SM8635 Snapdragon 8s Gen 3 (4 nm)\\n8 nh\u00e2n (1x3.0 GHz & 4x2.8 GHz & 3x2.0 GHz)\\nGPU: Adreno 735\", \"RAM:\": \"8-16GB\", \"B\u1ed9 nh\u1edb trong:\": \"256GB-1TB, UFS 4.0\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"5000 mAh\\nS\u1ea1c nhanh 90W, PD3.0, QC3+\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a ph\u1eb3ng\\nM\u1eb7t l\u01b0ng nh\u1ef1a bo cong\\nKinh m\u00e0n h\u00ecnh Gorilla Glass Victus\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP64\\nC\u1ea3m bi\u1ebfn v\u00e2n tay d\u01b0\u1edbi m\u00e0n h\u00ecnh\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "588", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-turbo-3-snapdragon-8s-gen-3.html"}
+2025-04-28 11:34:24,386 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi 14R 5G (Snapdragon 4 Gen 2)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["T\u00edm", "4-128GB", "2.450.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["T\u00edm", "6-128GB", "2.650.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["T\u00edm", "8-128GB", "2.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["T\u00edm", "8-256GB", "3.250.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["\u0110en", "4-128GB", "2.450.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["\u0110en", "6-128GB", "2.650.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["\u0110en", "8-128GB", "2.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["\u0110en", "8-256GB", "3.250.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh l\u00e1", "4-128GB", "2.450.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh l\u00e1", "6-128GB", "2.650.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh l\u00e1", "8-128GB", "2.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh l\u00e1", "8-256GB", "3.250.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh d\u01b0\u01a1ng", "4-128GB", "2.450.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh d\u01b0\u01a1ng", "6-128GB", "2.650.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh d\u01b0\u01a1ng", "8-128GB", "2.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh d\u01b0\u01a1ng", "8-256GB", "3.250.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"IPS LCD, 120Hz, 450 nits (typ), 600 nits (HBM)\\n6.88 inches, HD+ (720 x 1640 pixels)\\nM\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~260 ppi\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 14, HyperOS\", \"Camera sau:\": \"13 MP (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"Camera tr\u01b0\u1edbc:\": \"5 MP (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm SM4450 Snapdragon 4 Gen 2 (4 nm)\\n8 nh\u00e2n (2x2.2 GHz & 6x1.95 GHz)\\nGPU: Adreno 613\", \"RAM:\": \"4-8GB, LPDDR4X\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"5160 mAh\\nS\u1ea1c 18W\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u1eb7t l\u01b0ng k\u00ednh/nh\u1ef1a/da\\nM\u00e0n h\u00ecnh ph\u1eb3ng\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "0", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-14r-5g-snapdragon-gen-2.html"}
+2025-04-28 11:34:24,386 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi POCO C75 (m\u00e0n 120Hz - 6.88 inch)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "POCO", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["V\u00e0ng (Gold)", "6-128GB", "2.550.000 \u20ab", "2.950.000\u20ab"], ["V\u00e0ng (Gold)", "8-256GB", "3.050.000 \u20ab", "2.950.000\u20ab"], ["Xanh l\u00e1", "6-128GB", "2.550.000 \u20ab", "2.950.000\u20ab"], ["Xanh l\u00e1", "8-256GB", "3.050.000 \u20ab", "2.950.000\u20ab"], ["\u0110en", "6-128GB", "2.550.000 \u20ab", "2.950.000\u20ab"], ["\u0110en", "8-256GB", "3.050.000 \u20ab", "2.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 18 th\u00e1ng Ch\u00ednh h\u00e3ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"IPS LCD, 120Hz, 450 nits (typ), 600 nits (HBM)\\n6.88 inches, HD+ (720 x 1640 pixels)\\nM\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~260 ppi\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 14, HyperOS\", \"Camera sau:\": \"50 MP, f/1.8, 28mm (g\u00f3c r\u1ed9ng), PDAF\\nx MP (c\u1ea3m bi\u1ebfn ph\u1ee5)\\nQuay phim: 1080p@30fps\", \"Camera tr\u01b0\u1edbc:\": \"13 MP, f/2.0 (g\u00f3c r\u1ed9ng), HDR\\nQuay phim: 1080p@30fps\", \"CPU:\": \"MediaTek Helio G81 Ultra (12 nm)\\n8 nh\u00e2n (2x2.0 GHz & 6x1.8 GHz)\\nGPU: Mali-G52 MC2\", \"RAM:\": \"6-8GB, LPDDR4X\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, eMMC 5.1\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"5160 mAh\\nS\u1ea1c nhanh 18W, PD\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a ph\u1eb3ng\\nM\u1eb7t l\u01b0ng nh\u1ef1a ph\u1eb3ng\\nM\u00e0n h\u00ecnh gi\u1ecdt n\u01b0\u1edbc ph\u1eb3ng\\nC\u1ea3m bi\u1ebfn v\u00e2n tay c\u1ea1nh b\u00ean\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "0", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-poco-c75-man-6-88-120hz.html"}
+2025-04-28 11:34:24,386 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi REDMI Note 14 Ch\u00ednh h\u00e3ng (Helio G99 Ultra)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["T\u00edm S\u01b0\u01a1ng Mai", "6-128GB", "4.000.000 \u20ab", "4.950.000\u20ab"], ["T\u00edm S\u01b0\u01a1ng Mai", "8-128GB", "4.600.000 \u20ab", "4.950.000\u20ab"], ["Xanh Lime", "6-128GB", "4.000.000 \u20ab", "4.950.000\u20ab"], ["Xanh Lime", "8-128GB", "4.600.000 \u20ab", "4.950.000\u20ab"], ["\u0110en B\u00e1n D\u1ea1", "6-128GB", "4.000.000 \u20ab", "4.950.000\u20ab"], ["\u0110en B\u00e1n D\u1ea1", "8-128GB", "4.600.000 \u20ab", "4.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 24 th\u00e1ng Ch\u00ednh h\u00e3ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 120Hz, 1200 nits (HBM), 1800 nits (peak)\\n6.67 inches, Full HD+ (1080 x 2400 pixels)\\nT\u1ef7 l\u1ec7 20:9; M\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~395 ppi\\nAlways-on Display\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 14, HyperOS\", \"Camera sau:\": \"108 MP, f/1.7 (g\u00f3c r\u1ed9ng), 1/1.67\\\", 0.64\u00b5m, PDAF\\n2 MP, f/2.4, (macro)\\n2 MP, f/2.4, (\u0111\u1ed9 s\u00e2u)\\nQuay phim: 1080p@30fps\", \"Camera tr\u01b0\u1edbc:\": \"20 MP, f/2.2 (g\u00f3c r\u1ed9ng), 1/4.0\\\", 0.7\u00b5m\\nQuay phim: 1080p@30fps\", \"CPU:\": \"MediaTek MT8781 Helio G99 Ultra (6 nm)\\n8 nh\u00e2n (2x2.2 GHz & 6x2.0 GHz)\\nGPU: Mali-G57 MC2\", \"RAM:\": \"6-8GB, LPDDR4X\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM Nano\", \"Dung l\u01b0\u1ee3ng pin:\": \"5500 mAh\\nS\u1ea1c nhanh 33W\\nC\u1ee7 s\u1ea1c 33W \u0111i k\u00e8m\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a ph\u1eb3ng\\nM\u1eb7t l\u01b0ng nh\u1ef1a ph\u1eb3ng\\nM\u00e0n h\u00ecnh ph\u1eb3ng k\u00ednh Corning Gorilla 5\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP54\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "5", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-14-4g.html"}
+2025-04-28 11:34:24,386 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Realme Neo7x 5G (Snapdragon 6 Gen 4)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Realme", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Tr\u1eafng", "8-128GB", "4.450.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Tr\u1eafng", "8-256GB", "4.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Tr\u1eafng", "12-512GB", "6.050.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["X\u00e1m Titan", "8-128GB", "4.450.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["X\u00e1m Titan", "8-256GB", "4.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["X\u00e1m Titan", "12-512GB", "6.050.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 120Hz, 2000 nits (peak)\\n6.67 inches, Full HD+ (1080 x 2400 pixels)\\nT\u1ef7 l\u1ec7 20:9, m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~395 ppi\\nH\u1ed7 tr\u1ee3  h\u00ecnh \u1ea3nh HDR\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 15, Realme UI 6.0\", \"Camera sau:\": \"50 MP, f/1.8, 27mm (g\u00f3c r\u1ed9ng), 1/2.88\\\", 0.61\u00b5m, PDAF\\nQuay phim: 4K@30fps, 1080p@30/60/120fps, gyro-EIS\", \"Camera tr\u01b0\u1edbc:\": \"16 MP, f/2.4, 23mm (g\u00f3c r\u1ed9ng), 1/3.09\\\", 1.0\u00b5m\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm Snapdragon 6 Gen 4 (4 nm)\\n8 nh\u00e2n (1x2.3 GHz & 3x2.2 GHz & 4x1.8 GHz)\\nGPU: Adreno xxx\", \"RAM:\": \"8-12GB\", \"B\u1ed9 nh\u1edb trong:\": \"128-512GB\", \"Th\u1ebb SIM:\": \"2 SIM Nano\", \"Dung l\u01b0\u1ee3ng pin:\": \"Si/C Li-Ion 6000mAh\\nS\u1ea1c nhanh 45W\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a ph\u1eb3ng\\nM\u1eb7t l\u01b0ng nh\u1ef1a ph\u1eb3ng\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP68/IP69\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "14", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/realme-neo7x-5g.html"}
+2025-04-28 11:34:24,386 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi 12C (Helio G85)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Redmi", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh \u0110\u1eadm", "4-64GB", "1.650.000 \u20ab", "2.950.000\u20ab"], ["Xanh \u0110\u1eadm", "4-128GB", "1.950.000 \u20ab", "2.950.000\u20ab"], ["Xanh b\u1ea1c h\u00e0", "4-64GB", "1.650.000 \u20ab", "2.950.000\u20ab"], ["Xanh b\u1ea1c h\u00e0", "4-128GB", "1.950.000 \u20ab", "2.950.000\u20ab"], ["T\u00edm", "4-64GB", "1.650.000 \u20ab", "2.950.000\u20ab"], ["T\u00edm", "4-128GB", "1.950.000 \u20ab", "2.950.000\u20ab"], ["\u0110en", "4-64GB", "1.650.000 \u20ab", "2.950.000\u20ab"], ["\u0110en", "4-128GB", "1.950.000 \u20ab", "2.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"IPS LCD, 500 nits (typ)\\n6.71 inches, HD+ (720 x 1650 pixels)\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 12, MIUI 13\", \"Camera sau:\": \"50 MP (g\u00f3c r\u1ed9ng), PDAF\\n0.08 MP (\u0111\u1ed9 s\u00e2u)\\nQuay phim: 1080p@30fps\", \"Camera tr\u01b0\u1edbc:\": \"5 MP\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Mediatek MT6769Z Helio G85 (12nm)\\n8 nh\u00e2n (2x2.0 GHz & 6x1.8 GHz)\\nGPU: Mali-G52 MC2\", \"RAM:\": \"4-6GB\\nLPDDR4x\", \"B\u1ed9 nh\u1edb trong:\": \"64-128GB\\neMMC 5.1\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Po 5000 mAh\\nS\u1ea1c 10W\", \"Thi\u1ebft k\u1ebf:\": \"Thanh + C\u1ea3m \u1ee9ng\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "11", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-12c-helio-g85.html"}
+2025-04-28 11:34:24,387 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Xiaomi Redmi Note 13 C\u0169 (99% - M\u00e0n AMOLED 120Hz 1 t\u1ef7 m\u00e0u)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "\u0110i\u1ec7n tho\u1ea1i C\u0169", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Tr\u1eafng", "6-128GB", "2.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Tr\u1eafng", "8-128GB", "3.250.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Tr\u1eafng", "8-256GB", "3.750.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh", "6-128GB", "2.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh", "8-128GB", "3.250.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["Xanh", "8-256GB", "3.750.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["\u0110en", "6-128GB", "2.950.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["\u0110en", "8-128GB", "3.250.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"], ["\u0110en", "8-256GB", "3.750.000 \u20ab", "Kh\u00f4ng c\u00f3 gi\u00e1 c\u0169"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "Kh\u00f4ng c\u00f3 th\u00f4ng tin b\u1ea3o h\u00e0nh", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 1 t\u1ef7 m\u00e0u, 120Hz, 1000 nits (t\u1ed1i \u0111a)\\n6.67 inches, Full HD+ (1080 x 2400 pixels)\\nT\u1ef7 l\u1ec7 20:9; M\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~395 ppi\\nCorning Gorilla Glass 5\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 13, MIUI 14\", \"Camera sau:\": \"100 MP, f/1.7 (g\u00f3c r\u1ed9ng), PDAF\\n2 MP, f/2.4 (\u0111\u1ed9 s\u00e2u)\\nQuay phim: 1080p@30fps\", \"Camera tr\u01b0\u1edbc:\": \"16 MP (g\u00f3c r\u1ed9ng), HDR\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Mediatek Dimensity 6080 (6 nm)\\n8 nh\u00e2n (2x2.4 GHz & 6x2.0 GHz)\\nGPU: Mali-G57 MC2\", \"RAM:\": \"6-12GB, LPDDR4X\", \"B\u1ed9 nh\u1edb trong:\": \"128-256GB, UFS 2.2\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"Li-Po 5000 mAh\\nS\u1ea1c nhanh 33W\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u1eb7t l\u01b0ng nh\u1ef1a\\nK\u00ednh tr\u01b0\u1edbc Corning Gorilla Glass 5\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP54\"}", "\u0110\u00e1nh gi\u00e1": "4.9/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "9", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-13-cu-man-amoled-1ty-mau.html"}
+2025-04-28 11:34:24,387 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Vivo iQOO Z9 Turbo Endurance Edition (Pin 6400 mAh)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Vivo", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh d\u01b0\u01a1ng", "12-256GB", "6.050.000 \u20ab", "6.950.000\u20ab"], ["Xanh d\u01b0\u01a1ng", "16-256GB", "6.450.000 \u20ab", "6.950.000\u20ab"], ["Xanh d\u01b0\u01a1ng", "12-512GB", "6.450.000 \u20ab", "6.950.000\u20ab"], ["Xanh d\u01b0\u01a1ng", "16-512GB", "7.050.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "12-256GB", "6.150.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "16-256GB", "6.450.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "12-512GB", "6.550.000 \u20ab", "6.950.000\u20ab"], ["Tr\u1eafng", "16-512GB", "7.050.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "12-256GB", "6.150.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "16-256GB", "6.450.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "12-512GB", "6.550.000 \u20ab", "6.950.000\u20ab"], ["\u0110en", "16-512GB", "7.050.000 \u20ab", "6.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 1 t\u1ef7 m\u00e0u, 144Hz, HDR, 4500 nits (t\u1ed1i \u0111a)\\n6.78 inches, 1.5K (1260 x 2800 pixels)\\nT\u1ef7 l\u1ec7 20:9, m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~453 ppi\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 15, OriginOS 5\", \"Camera sau:\": \"50 MP, f/1.8 (g\u00f3c r\u1ed9ng), PDAF, OIS\\n8 MP, f/2.2 (g\u00f3c si\u00eau r\u1ed9ng)\\nQuay phim: 4K@30/60fps, 1080p, gyro-EIS, OIS\", \"Camera tr\u01b0\u1edbc:\": \"16 MP, f/2.5 (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm SM8635 Snapdragon 8s Gen 3 (4 nm)\\n8 nh\u00e2n (1x3.0 GHz & 4x2.8 GHz & 3x2.0 GHz)\\nGPU: Adreno 735\", \"RAM:\": \"12-16GB, LPDDR5X\", \"B\u1ed9 nh\u1edb trong:\": \"256-512GB, UFS 4.0\", \"Th\u1ebb SIM:\": \"2 SIM Nano\", \"Dung l\u01b0\u1ee3ng pin:\": \"Si/C 6400mAh\\nS\u1ea1c nhanh 80W\\nS\u1ea1c ng\u01b0\u1ee3c 7.5W (d\u00e2y)\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u1eb7t l\u01b0ng nh\u1ef1a ph\u1eb3ng bo cong nh\u1eb9\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP64\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "25", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/vivo-iqoo-z9-turbo-endurance-edition.html"}
+2025-04-28 11:34:24,387 - __main__ - INFO - Received message: {"T\u00ean s\u1ea3n ph\u1ea9m": "\u0110i\u1ec7n tho\u1ea1i Vivo iQOO Z9 Turbo 5G (Snapdragon 8s Gen 3 - Pin 6000mAh)", "Lo\u1ea1i \u0111i\u1ec7n tho\u1ea1i": "Vivo", "M\u00e0u s\u1eafc - Phi\u00ean b\u1ea3n b\u1ed9 nh\u1edb - Gi\u00e1 t\u01b0\u01a1ng \u1ee9ng": [["Xanh", "12-256GB", "6.050.000 \u20ab", "7.950.000\u20ab"], ["Xanh", "12-512GB", "6.450.000 \u20ab", "7.950.000\u20ab"], ["Xanh", "16-256GB", "6.450.000 \u20ab", "7.950.000\u20ab"], ["Xanh", "16-512GB", "7.050.000 \u20ab", "7.950.000\u20ab"], ["Tr\u1eafng", "12-256GB", "6.150.000 \u20ab", "7.950.000\u20ab"], ["Tr\u1eafng", "12-512GB", "6.450.000 \u20ab", "7.950.000\u20ab"], ["Tr\u1eafng", "16-256GB", "6.550.000 \u20ab", "7.950.000\u20ab"], ["Tr\u1eafng", "16-512GB", "7.050.000 \u20ab", "7.950.000\u20ab"], ["\u0110en", "12-256GB", "6.150.000 \u20ab", "7.950.000\u20ab"], ["\u0110en", "12-512GB", "6.450.000 \u20ab", "7.950.000\u20ab"], ["\u0110en", "16-256GB", "6.550.000 \u20ab", "7.950.000\u20ab"], ["\u0110en", "16-512GB", "7.050.000 \u20ab", "7.950.000\u20ab"]], "Th\u1eddi gian b\u1ea3o h\u00e0nh": "BH Th\u01b0\u1eddng 12 Th\u00e1ng", "Th\u00f4ng s\u1ed1 k\u1ef9 thu\u1eadt": "{\"M\u00e0n h\u00ecnh:\": \"AMOLED, 1 t\u1ef7 m\u00e0u, 144Hz, HDR, 4500 nits (t\u1ed1i \u0111a)\\n6.78 inches, 1.5K (1260 x 2800 pixels)\\nT\u1ef7 l\u1ec7 20:9, m\u1eadt \u0111\u1ed9 \u0111i\u1ec3m \u1ea3nh ~453 ppi\\nAlways-on display\", \"H\u1ec7 \u0111i\u1ec1u h\u00e0nh:\": \"Android 14, OriginOS 4\", \"Camera sau:\": \"50 MP, f/1.8 (g\u00f3c r\u1ed9ng), PDAF, OIS\\n8 MP, f/2.2 (g\u00f3c si\u00eau r\u1ed9ng)\\nQuay phim: 4K@30/60fps, 1080p, gyro-EIS, OIS\", \"Camera tr\u01b0\u1edbc:\": \"16 MP, f/2.5 (g\u00f3c r\u1ed9ng)\\nQuay phim: 1080p@30fps\", \"CPU:\": \"Qualcomm SM8635 Snapdragon 8s Gen 3 (4 nm)\\n8 nh\u00e2n (1x3.0 GHz & 4x2.8 GHz & 3x2.0 GHz)\\nGPU: Adreno 735\", \"RAM:\": \"12-16GB, LPDDR5X\", \"B\u1ed9 nh\u1edb trong:\": \"256-512GB, UFS 4.0\", \"Th\u1ebb SIM:\": \"2 SIM, Nano SIM\", \"Dung l\u01b0\u1ee3ng pin:\": \"6000 mAh\\nS\u1ea1c nhanh 80W\\nS\u1ea1c ng\u01b0\u1ee3c c\u00f3 d\u00e2y 7.5W\", \"Thi\u1ebft k\u1ebf:\": \"Khung nh\u1ef1a vu\u00f4ng v\u1ee9c\\nM\u1eb7t l\u01b0ng nh\u1ef1a ph\u1eb3ng bo cong nh\u1eb9\\nKh\u00e1ng n\u01b0\u1edbc, b\u1ee5i IP64\"}", "\u0110\u00e1nh gi\u00e1": "5/5", "S\u1ed1 l\u01b0\u1ee3t \u0111\u00e1nh gi\u00e1 v\u00e0 h\u1ecfi \u0111\u00e1p": "585", "\u0110\u01b0\u1eddng d\u1eabn": "https://mobilecity.vn/dien-thoai/vivo-iqoo-z9-turbo-snapdragon-8s-gen-3.html"}
+2025-04-28 11:39:12,925 - kafka.coordinator - INFO - Stopping heartbeat thread
+2025-04-28 11:39:33,946 - __main__ - INFO - Spark session initialized.
+2025-04-28 11:39:37,316 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 11:39:37,942 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 11:43:01,104 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-28 11:43:01,105 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:43:01,105 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:43:01,106 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-28 11:43:01,108 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:43:01,108 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:43:01,108 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:43:01,167 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:43:30,674 - __main__ - INFO - Spark session initialized.
+2025-04-28 11:43:35,128 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 11:43:35,778 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 11:49:41,540 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-28 11:49:41,541 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:49:41,542 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:49:41,544 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-28 11:49:41,547 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:49:41,547 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-28 11:49:41,548 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:49:41,608 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:49:53,482 - __main__ - INFO - Spark session initialized.
+2025-04-28 11:49:57,669 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 11:49:59,670 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 11:51:27,183 - __main__ - INFO - Spark session initialized.
+2025-04-28 11:51:31,095 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 11:51:31,512 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 12:41:01,171 - __main__ - INFO - Spark session initialized.
+2025-04-28 12:41:05,717 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 12:41:06,119 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 12:41:07,332 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 12:51:55,463 - __main__ - INFO - Spark session initialized.
+2025-04-28 12:51:59,952 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 12:52:00,486 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 12:52:02,033 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 13:01:00,391 - __main__ - INFO - Spark session initialized.
+2025-04-28 13:01:04,109 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 13:01:04,530 - __main__ - INFO - Parsed Kafka data.
+2025-04-28 13:01:05,266 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-28 13:01:46,844 - __main__ - INFO - Spark session initialized.
+2025-04-28 13:01:50,453 - __main__ - INFO - Connected to Kafka topic.
+2025-04-28 13:01:50,898 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 00:56:40,795 - __main__ - INFO - Spark session initialized.
+2025-04-29 00:56:45,511 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 00:56:45,924 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 00:56:48,692 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 00:58:49,356 - __main__ - INFO - Spark session initialized.
+2025-04-29 00:58:53,628 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 00:58:54,034 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 00:59:01,285 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:02:36,722 - __main__ - INFO - Spark session initialized.
+2025-04-29 01:02:40,289 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 01:02:40,806 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 01:02:43,335 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:11:27,427 - __main__ - INFO - Spark session initialized.
+2025-04-29 01:11:31,288 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 01:11:31,716 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 01:11:34,461 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:13:25,762 - __main__ - INFO - Spark session initialized.
+2025-04-29 01:13:29,616 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 01:13:30,120 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 01:18:29,765 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 01:18:29,768 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:18:29,769 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:18:29,770 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 01:18:29,773 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:18:29,774 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:18:29,774 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:17:08,298 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:19:37,830 - __main__ - INFO - Spark session initialized.
+2025-04-29 01:19:41,795 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 01:19:42,156 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 01:21:54,026 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 01:21:54,028 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:21:54,029 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:21:54,030 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 01:21:54,031 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:21:54,032 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:21:54,032 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:24:07,348 - __main__ - INFO - Spark session initialized.
+2025-04-29 01:24:10,662 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 01:24:10,992 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 01:27:14,303 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 01:27:14,304 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:27:14,304 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:27:14,305 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 01:27:14,306 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:27:14,307 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:27:14,307 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:27:14,383 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:27:25,368 - __main__ - INFO - Spark session initialized.
+2025-04-29 01:27:29,110 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 01:27:29,517 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 01:29:47,472 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 01:29:47,473 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:29:47,474 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:29:47,475 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 01:29:47,476 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:29:47,476 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 01:29:47,476 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:29:47,592 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 01:30:00,956 - __main__ - INFO - Spark session initialized.
+2025-04-29 01:30:04,589 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 01:30:04,984 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 01:30:08,360 - py4j.clientserver - INFO - Closing down clientserver connection

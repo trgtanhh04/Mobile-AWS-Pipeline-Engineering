@@ -1,0 +1,10 @@
+[Kafka]
+Công việc	Lệnh
+Vào container Kafka: 	docker exec -it kafka bash
+List tất cả topics: 	kafka-topics --bootstrap-server localhost:9092 --list
+Tạo topic mới: 	kafka-topics --bootstrap-server localhost:9092 --create --topic ten-topic --partitions 1 --replication-factor 1
+Xóa topic:	kafka-topics --bootstrap-server localhost:9092 --delete --topic ten-topic
+Xem chi tiết 1 topic:	kafka-topics --bootstrap-server localhost:9092 --describe --topic ten-topic
+
+
+[]
