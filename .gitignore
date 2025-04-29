@@ -1,2 +1,8 @@
 config/config.conf
 .env
+logs
+data_crawled
+checkpoints
+init-scripts
+__pycache__
+plugins

@@ -339,3 +339,64 @@ BrokenPipeError: [Errno 32] Broken pipe
 2025-04-28 10:48:54,061 - kafka.coordinator - INFO - Successfully joined group phone_data_group with generation 5
 2025-04-28 10:48:54,061 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='movies_topic', partition=0)]
 2025-04-28 10:48:54,062 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='movies_topic', partition=0)} for group phone_data_group
+2025-04-29 12:13:35,808 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-29 12:13:35,810 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-04-29 12:13:35,811 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-29 12:13:35,914 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-04-29 12:13:35,914 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-04-29 12:13:35,914 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-04-29 12:13:36,017 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-04-29 12:13:36,017 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-04-29 12:13:36,021 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-29 12:13:36,022 - kafka.conn - INFO - Probing node 1 broker version
+2025-04-29 12:13:36,022 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-29 12:13:36,023 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-29 12:13:36,125 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-04-29 12:13:36,126 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-04-29 12:13:36,126 - __main__ - INFO - Checking if topic 'mobile_topic' exists...
+2025-04-29 12:13:36,127 - __main__ - INFO - Topic 'mobile_topic' already exists. Deleting it...
+2025-04-29 12:13:36,160 - __main__ - INFO - Topic 'mobile_topic' deleted successfully.
+2025-04-29 12:13:36,161 - __main__ - INFO - Creating topic 'mobile_topic'...
+2025-04-29 12:13:36,166 - __main__ - ERROR - Failed to reset topic 'mobile_topic': [Error 36] TopicAlreadyExistsError: Request 'CreateTopicsRequest_v3(create_topic_requests=[(topic='mobile_topic', num_partitions=1, replication_factor=1, replica_assignment=[], configs=[])], timeout=30000, validate_only=False)' failed with response 'CreateTopicsResponse_v3(throttle_time_ms=0, topic_errors=[(topic='mobile_topic', error_code=36, error_message="Topic 'mobile_topic' is marked for deletion.")])'.
+2025-04-29 12:13:36,167 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-29 12:13:36,169 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-29 12:13:36,170 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-04-29 12:13:36,171 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-29 12:13:36,273 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-04-29 12:13:36,274 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-04-29 12:13:36,429 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-29 12:13:36,430 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-29 12:13:36,430 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-29 12:13:36,554 - __main__ - INFO - Sent record to Kafka topic 'mobile_topic': {'product_name': 'Điện thoại Xiaomi Redmi 12C (Helio G85)', 'brand': 'Redmi', 'variants': [{'color': 'Xanh Đậm', 'memory': '4-64GB', 'price': '1.650.000 ₫', 'old_price': '2.950.000₫'}, {'color': 'Xanh bạc hà', 'memory': '4-64GB', 'price': '1.650.000 ₫', 'old_price': '2.950.000₫'}], 'warranty': 'BH Thường 12 tháng', 'specifications': {'screen': 'IPS LCD, 500 nits (typ), 6.71 inches, HD+ (720 x 1650 pixels)', 'os': 'Android 12, MIUI 13', 'camera_rear': '50 MP (góc rộng), PDAF', 'camera_front': '5 MP', 'cpu': 'Helio G85', 'battery': 'Li-Po 5000 mAh'}, 'rating': '5/5', 'reviews_count': 11, 'link': 'https://mobilecity.vn/dien-thoai/xiaomi-redmi-12c-helio-g85.html'}
+2025-04-29 12:13:36,562 - __main__ - INFO - All records have been sent to Kafka topic 'mobile_topic'.
+2025-04-29 12:13:36,562 - kafka.producer.kafka - INFO - Closing the Kafka producer with 9223372036.0 secs timeout.
+2025-04-29 12:13:36,563 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-29 12:13:36,565 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-29 12:13:36,566 - kafka.conn - INFO - Probing node bootstrap-0 broker version
+2025-04-29 12:13:36,566 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-29 12:13:36,669 - kafka.conn - INFO - Broker version identified as 2.5.0
+2025-04-29 12:13:36,669 - kafka.conn - INFO - Set configuration api_version=(2, 5, 0) to skip auto check_version requests on startup
+2025-04-29 12:13:36,670 - kafka.consumer.subscription_state - INFO - Updating subscribed topics to: ('mobile_topic',)
+2025-04-29 12:13:36,670 - __main__ - INFO - Consuming messages from Kafka topic: mobile_topic
+2025-04-29 12:13:36,946 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-29 12:13:36,947 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-29 12:13:36,947 - kafka.conn - INFO - <BrokerConnection node_id=bootstrap-0 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-29 12:13:37,807 - kafka.cluster - INFO - Group coordinator for phone_data_group is BrokerMetadata(nodeId='coordinator-1', host='localhost', port=29092, rack=None)
+2025-04-29 12:13:37,808 - kafka.coordinator - INFO - Discovered coordinator coordinator-1 for group phone_data_group
+2025-04-29 12:13:37,808 - kafka.coordinator - INFO - Starting new heartbeat thread
+2025-04-29 12:13:37,809 - kafka.coordinator.consumer - INFO - Revoking previously assigned partitions set() for group phone_data_group
+2025-04-29 12:13:37,810 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: connecting to localhost:29092 [('127.0.0.1', 29092) IPv4]
+2025-04-29 12:13:37,810 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-1 host=localhost:29092 <connecting> [IPv4 ('127.0.0.1', 29092)]>: Connection complete.
+2025-04-29 12:13:37,911 - kafka.coordinator - INFO - (Re-)joining group phone_data_group
+2025-04-29 12:13:41,916 - kafka.coordinator - INFO - Elected group leader -- performing partition assignments using range
+2025-04-29 12:13:41,975 - kafka.coordinator - INFO - Successfully joined group phone_data_group with generation 1
+2025-04-29 12:13:41,976 - kafka.consumer.subscription_state - INFO - Updated partition assignment: [TopicPartition(topic='mobile_topic', partition=0)]
+2025-04-29 12:13:41,976 - kafka.coordinator.consumer - INFO - Setting newly assigned partitions {TopicPartition(topic='mobile_topic', partition=0)} for group phone_data_group
+2025-04-29 12:13:42,011 - __main__ - INFO - Received message: {'product_name': 'Điện thoại Xiaomi Redmi 12C (Helio G85)', 'brand': 'Redmi', 'variants': [{'color': 'Xanh Đậm', 'memory': '4-64GB', 'price': '1.650.000 ₫', 'old_price': '2.950.000₫'}, {'color': 'Xanh bạc hà', 'memory': '4-64GB', 'price': '1.650.000 ₫', 'old_price': '2.950.000₫'}], 'warranty': 'BH Thường 12 tháng', 'specifications': {'screen': 'IPS LCD, 500 nits (typ), 6.71 inches, HD+ (720 x 1650 pixels)', 'os': 'Android 12, MIUI 13', 'camera_rear': '50 MP (góc rộng), PDAF', 'camera_front': '5 MP', 'cpu': 'Helio G85', 'battery': 'Li-Po 5000 mAh'}, 'rating': '5/5', 'reviews_count': 11, 'link': 'https://mobilecity.vn/dien-thoai/xiaomi-redmi-12c-helio-g85.html'}
+2025-04-29 12:13:42,011 - __main__ - INFO - Processing message: ConsumerRecord(topic='mobile_topic', partition=0, offset=0, timestamp=1745903616554, timestamp_type=0, key=None, value={'product_name': 'Điện thoại Xiaomi Redmi 12C (Helio G85)', 'brand': 'Redmi', 'variants': [{'color': 'Xanh Đậm', 'memory': '4-64GB', 'price': '1.650.000 ₫', 'old_price': '2.950.000₫'}, {'color': 'Xanh bạc hà', 'memory': '4-64GB', 'price': '1.650.000 ₫', 'old_price': '2.950.000₫'}], 'warranty': 'BH Thường 12 tháng', 'specifications': {'screen': 'IPS LCD, 500 nits (typ), 6.71 inches, HD+ (720 x 1650 pixels)', 'os': 'Android 12, MIUI 13', 'camera_rear': '50 MP (góc rộng), PDAF', 'camera_front': '5 MP', 'cpu': 'Helio G85', 'battery': 'Li-Po 5000 mAh'}, 'rating': '5/5', 'reviews_count': 11, 'link': 'https://mobilecity.vn/dien-thoai/xiaomi-redmi-12c-helio-g85.html'}, headers=[], checksum=None, serialized_key_size=-1, serialized_value_size=748, serialized_header_size=-1)
+2025-04-29 12:13:54,676 - kafka.coordinator - INFO - Stopping heartbeat thread
+2025-04-29 12:13:54,676 - kafka.coordinator - INFO - Leaving consumer group (phone_data_group).
+2025-04-29 12:13:54,704 - kafka.conn - INFO - <BrokerConnection node_id=1 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-29 12:13:54,705 - kafka.consumer.fetcher - ERROR - Fetch to node 1 failed: Cancelled: <BrokerConnection node_id=1 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>
+2025-04-29 12:13:54,705 - kafka.conn - INFO - <BrokerConnection node_id=coordinator-1 host=localhost:29092 <connected> [IPv4 ('127.0.0.1', 29092)]>: Closing connection. 
+2025-04-29 12:13:54,706 - __main__ - INFO - Kafka consumer closed.

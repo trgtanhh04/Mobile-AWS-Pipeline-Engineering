@@ -639,3 +639,494 @@ py4j.protocol.Py4JNetworkError: Error while sending or receiving
 2025-04-29 01:30:04,589 - __main__ - INFO - Connected to Kafka topic.
 2025-04-29 01:30:04,984 - __main__ - INFO - Parsed Kafka data.
 2025-04-29 01:30:08,360 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:36:11,232 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:36:18,188 - __main__ - ERROR - Failed to connect to Kafka: Queries with streaming sources must be executed with writeStream.start();
+kafka
+2025-04-29 11:36:18,338 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:37:39,164 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:37:43,201 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:37:43,656 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:37:45,938 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:38:57,692 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:39:01,604 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:39:02,052 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:39:04,333 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:40:25,115 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:40:28,982 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:40:29,528 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:40:30,673 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:46:53,233 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:46:57,186 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:46:57,619 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:47:00,838 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:47:32,480 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:47:36,063 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:47:36,542 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:47:40,233 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:49:20,047 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:49:24,385 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:49:24,958 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:49:28,997 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:50:22,662 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:50:28,023 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:50:28,508 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:53:34,678 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 11:53:34,686 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:53:34,686 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 11:53:34,689 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 11:53:34,694 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:53:34,695 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 11:53:34,695 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:53:34,877 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:53:55,898 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:53:59,772 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:54:00,216 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 11:56:01,058 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 11:56:01,065 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:56:01,066 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 11:56:01,068 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 11:56:01,073 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:56:01,074 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 11:56:01,074 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 11:59:03,119 - __main__ - INFO - Spark session initialized.
+2025-04-29 11:59:07,356 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 11:59:07,889 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 12:10:17,423 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 12:10:17,436 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:10:17,437 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:10:17,440 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 12:10:17,451 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:10:17,451 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:10:17,452 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:10:17,688 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:10:44,629 - __main__ - INFO - Spark session initialized.
+2025-04-29 12:10:48,125 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 12:10:48,495 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 12:10:50,866 - py4j.java_gateway - INFO - Callback Server Starting
+2025-04-29 12:10:50,867 - py4j.java_gateway - INFO - Socket listening on ('127.0.0.1', 43817)
+2025-04-29 12:11:12,326 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 12:11:12,329 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:11:12,329 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:11:12,331 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 12:11:12,335 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:11:12,336 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:11:12,336 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:11:12,484 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:14:10,625 - __main__ - INFO - Spark session initialized.
+2025-04-29 12:14:15,392 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 12:14:15,807 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 12:14:18,120 - py4j.java_gateway - INFO - Callback Server Starting
+2025-04-29 12:14:18,120 - py4j.java_gateway - INFO - Socket listening on ('127.0.0.1', 44729)
+2025-04-29 12:14:24,638 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:18:39,147 - __main__ - INFO - Spark session initialized.
+2025-04-29 12:18:43,170 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 12:18:43,633 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 12:18:45,840 - py4j.java_gateway - INFO - Callback Server Starting
+2025-04-29 12:18:45,841 - py4j.java_gateway - INFO - Socket listening on ('127.0.0.1', 46201)
+2025-04-29 12:18:48,894 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:22:45,123 - __main__ - INFO - Spark session initialized.
+2025-04-29 12:22:49,139 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 12:22:49,590 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 12:22:52,101 - py4j.java_gateway - INFO - Callback Server Starting
+2025-04-29 12:22:52,102 - py4j.java_gateway - INFO - Socket listening on ('127.0.0.1', 36761)
+2025-04-29 12:22:57,222 - py4j.clientserver - INFO - Python Server ready to receive messages
+2025-04-29 12:22:57,223 - py4j.clientserver - INFO - Received command c on object id p0
+2025-04-29 12:24:20,414 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+2025-04-29 12:24:20,427 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:24:20,428 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=4>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:24:20,431 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 12:24:20,441 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:24:20,441 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:24:20,441 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:24:20,673 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:28:46,205 - __main__ - INFO - Spark session initialized.
+2025-04-29 12:28:50,050 - __main__ - INFO - Connected to Kafka topic.
+2025-04-29 12:28:50,482 - __main__ - INFO - Parsed Kafka data.
+2025-04-29 12:28:52,885 - py4j.java_gateway - INFO - Callback Server Starting
+2025-04-29 12:28:52,887 - py4j.java_gateway - INFO - Socket listening on ('127.0.0.1', 46155)
+2025-04-29 12:28:58,787 - py4j.clientserver - INFO - Python Server ready to receive messages
+2025-04-29 12:28:58,787 - py4j.clientserver - INFO - Received command c on object id p0
+2025-04-29 12:34:07,454 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError
+2025-04-29 12:34:08,642 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:34:08,668 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:34:08,737 - py4j.clientserver - INFO - Error while receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError
+2025-04-29 12:34:08,737 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:34:08,737 - root - ERROR - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 539, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+2025-04-29 12:34:08,738 - py4j.clientserver - INFO - Error while sending or receiving.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+2025-04-29 12:34:08,754 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:34:08,755 - root - INFO - Exception while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 503, in send_command
+    self.socket.sendall(command.encode("utf-8"))
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 381, in signal_handler
+    self.cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 2446, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1322, in __call__
+    return_value = get_return_value(
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 179, in deco
+    return f(*a, **kw)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/protocol.py", line 334, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o22.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 506, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending
+2025-04-29 12:34:08,805 - root - ERROR - KeyboardInterrupt while sending command.
+Traceback (most recent call last):
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 511, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/tienanh/.local/lib/python3.10/site-packages/pyspark/context.py", line 382, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+2025-04-29 12:34:08,809 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:34:08,837 - py4j.clientserver - INFO - Closing down clientserver connection
+2025-04-29 12:34:08,932 - py4j.clientserver - INFO - Closing down clientserver connection

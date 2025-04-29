@@ -76,7 +76,7 @@ def send_to_kafka(data, bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS, topic=TOPIC_P
     try:
         for record in data:
             producer.send(topic, value=record)
-            # logger.info(f"Sent record to Kafka topic '{topic}': {record}")
+            logger.info(f"Sent record to Kafka topic '{topic}': {record}")
         producer.flush()
         logger.info(f"All records have been sent to Kafka topic '{topic}'.")
     except KafkaError as e:

@@ -25,7 +25,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 from utils.constants import KAFKA_BOOTSTRAP_SERVERS, TOPIC_PHONE_DATA
-
+from utils.constants import INPUT_PATH, OUTPUT_PATH
 # ========== CONECT + EXTRACT DATA FROM KAFKA ==========
 def consume_from_kafka():
     """
@@ -69,20 +69,20 @@ def init_spark_session():
         logger.error(f"Failed to initialize Spark session: {e}")
         raise e
     
-
 def connect_to_kafka(spark):
     """
     Kết nối đến Kafka và nhận dữ liệu từ topic.
     """
     try:
-        # Đọc dữ liệu stream từ Kafka
         df = spark.readStream \
             .format("kafka") \
             .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS) \
             .option("subscribe", TOPIC_PHONE_DATA) \
-            .option("startingOffsets", "earliest") \
+            .option("startingOffsets", "latest") \
+            .option("failOnDataLoss", "false") \
             .load()
 
+        # print(df.head())
         df = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
         logger.info("Connected to Kafka topic.")
         return df
@@ -92,12 +92,17 @@ def connect_to_kafka(spark):
         raise e
 
 def parse_kafka_data(df):
+    """
+    Parse dữ liệu Kafka thành các cột đúng định dạng.
+    """
     schema = StructType([
         StructField("Tên sản phẩm", StringType()),
         StructField("Loại điện thoại", StringType()),
-        StructField("Màu sắc - Phiên bản bộ nhớ - Giá tương ứng", StringType()),
+        StructField("Màu sắc - Phiên bản bộ nhớ - Giá tương ứng", ArrayType(
+            ArrayType(StringType())  # Đây là danh sách các danh sách nhỏ [Màu sắc, Phiên bản, Giá, Giá cũ]
+        )),
         StructField("Thời gian bảo hành", StringType()),
-        StructField("Thông số kỹ thuật", StringType()),
+        StructField("Thông số kỹ thuật", StringType()),  # Thông số kỹ thuật hiện là JSON dạng String
         StructField("Đánh giá", StringType()),
         StructField("Số lượt đánh giá và hỏi đáp", StringType()),
         StructField("Đường dẫn", StringType())
@@ -106,12 +111,12 @@ def parse_kafka_data(df):
         parsed_df = df.selectExpr("CAST(value AS STRING)") \
             .select(from_json(col("value"), schema).alias("data")) \
             .select("data.*")
+
         logger.info("Parsed Kafka data.")
         return parsed_df
     except Exception as e:
         logger.error(f"Failed to parse Kafka data: {e}")
         raise e
-    
 # ========== TRANSFORM + LOAD DATA ==========
 
 
@@ -347,17 +352,37 @@ def transform_data(parsed_df):
                                 (col("loai_dien_thoai") != "Máy Chơi Game PC"))
     
     # Thuộc tính: Màu sắc, Phiên bản bộ nhớ, Giá mới, Giá cũ
+    # parsed_df = parsed_df.withColumn(
+    #     "mau_sac_phien_ban_bo_nho_gia_moi_gia_cu",
+    #     F.from_json(
+    #         F.col("mau_sac_phien_ban_bo_nho_gia_moi_gia_cu"),
+    #         ArrayType(ArrayType(StringType())) 
+    #     )
+    # )
+
+    # parsed_df = parsed_df.withColumn(
+    #     "exploded",
+    #     F.explode("mau_sac_phien_ban_bo_nho_gia_moi_gia_cu")
+    # )
+    # parsed_df = parsed_df.withColumn("mau_sac", F.col("exploded")[0]) \
+    #                     .withColumn("phien_ban_bo_nho", F.col("exploded")[1]) \
+    #                     .withColumn("gia_moi", F.col("exploded")[2]) \
+    #                     .withColumn("gia_cu", F.col("exploded")[3]) \
+    #                     .drop("exploded", "mau_sac_phien_ban_bo_nho_gia_moi_gia_cu")
+
     parsed_df = parsed_df.withColumn(
         "mau_sac_phien_ban_bo_nho_gia_moi_gia_cu",
         F.from_json(
-            F.col("mau_sac_phien_ban_bo_nho_gia_moi_gia_cu"),
-            ArrayType(ArrayType(StringType()))  
+            F.to_json(F.col("mau_sac_phien_ban_bo_nho_gia_moi_gia_cu")),  # <<< CHỈ THÊM to_json()
+            ArrayType(ArrayType(StringType()))
         )
     )
+
     parsed_df = parsed_df.withColumn(
         "exploded",
         F.explode("mau_sac_phien_ban_bo_nho_gia_moi_gia_cu")
     )
+
     parsed_df = parsed_df.withColumn("mau_sac", F.col("exploded")[0]) \
                         .withColumn("phien_ban_bo_nho", F.col("exploded")[1]) \
                         .withColumn("gia_moi", F.col("exploded")[2]) \
@@ -366,53 +391,20 @@ def transform_data(parsed_df):
 
 
     # Thuộc tính: Màn hình, Hệ điều hành, Camera sau, Camera trước, CPU, RAM, Bộ nhớ trong, Thẻ SIM, Dung lượng pin, Thiết kế
-    # specifications_schema = StructType([
-    #     StructField("man_hinh", StringType(), True),
-    #     StructField("he_dieu_hanh", StringType(), True),
-    #     StructField("camera_sau", StringType(), True),
-    #     StructField("camera_truoc", StringType(), True),
-    #     StructField("cpu", StringType(), True),
-    #     StructField("ram", StringType(), True),
-    #     StructField("bo_nho_trong", StringType(), True),
-    #     StructField("the_sim", StringType(), True),
-    #     StructField("dung_luong_pin", StringType(), True),
-    #     StructField("thiet_ke", StringType(), True)
-    # ])
-
-    # parsed_df = parsed_df.withColumn("thong_so_ky_thuat", from_json(col("thong_so_ky_thuat"), specifications_schema))
-
-    # parsed_df = parsed_df.select(
-    #     "*",  # Giữ nguyên các cột khác
-    #     col("thong_so_ky_thuat.man_hinh").alias("man_hinh"),
-    #     col("thong_so_ky_thuat.he_dieu_hanh").alias("he_dieu_hanh"),
-    #     col("thong_so_ky_thuat.camera_sau").alias("camera_sau"),
-    #     col("thong_so_ky_thuat.camera_truoc").alias("camera_truoc"),
-    #     col("thong_so_ky_thuat.cpu").alias("cpu"),
-    #     col("thong_so_ky_thuat.ram").alias("ram"),
-    #     col("thong_so_ky_thuat.bo_nho_trong").alias("bo_nho_trong"),
-    #     col("thong_so_ky_thuat.the_sim").alias("the_sim"),
-    #     col("thong_so_ky_thuat.dung_luong_pin").alias("dung_luong_pin"),
-    #     col("thong_so_ky_thuat.thiet_ke").alias("thiet_ke")
-    # )
-
-    # parsed_df = parsed_df.drop("thong_so_ky_thuat")
-
     parsed_df = parsed_df.withColumn(
         "thong_so_ky_thuat",
-        F.from_json(F.col("thong_so_ky_thuat"), ArrayType(StringType()))
+        from_json(col("thong_so_ky_thuat"), MapType(StringType(), StringType()))
     )
-
-    parsed_df = parsed_df.withColumn("man_hinh",        F.col("thong_so_ky_thuat")[0]) \
-                        .withColumn("he_dieu_hanh",     F.col("thong_so_ky_thuat")[1]) \
-                        .withColumn("camera_sau",       F.col("thong_so_ky_thuat")[2]) \
-                        .withColumn("camera_truoc",     F.col("thong_so_ky_thuat")[3]) \
-                        .withColumn("cpu",              F.col("thong_so_ky_thuat")[4]) \
-                        .withColumn("ram",              F.col("thong_so_ky_thuat")[5]) \
-                        .withColumn("bo_nho_trong",     F.col("thong_so_ky_thuat")[6]) \
-                        .withColumn("the_sim",          F.col("thong_so_ky_thuat")[7]) \
-                        .withColumn("dung_luong_pin",   F.col("thong_so_ky_thuat")[8]) \
-                        .withColumn("thiet_ke",         F.col("thong_so_ky_thuat")[9])
-
+    parsed_df = parsed_df.withColumn("man_hinh",        col("thong_so_ky_thuat")["Màn hình:"]) \
+                        .withColumn("he_dieu_hanh",     col("thong_so_ky_thuat")["Hệ điều hành:"]) \
+                        .withColumn("camera_sau",       col("thong_so_ky_thuat")["Camera sau:"]) \
+                        .withColumn("camera_truoc",     col("thong_so_ky_thuat")["Camera trước:"]) \
+                        .withColumn("cpu",              col("thong_so_ky_thuat")["CPU:"]) \
+                        .withColumn("ram",              col("thong_so_ky_thuat")["RAM:"]) \
+                        .withColumn("bo_nho_trong",     col("thong_so_ky_thuat")["Bộ nhớ trong:"]) \
+                        .withColumn("the_sim",          col("thong_so_ky_thuat")["Thẻ SIM:"]) \
+                        .withColumn("dung_luong_pin",   col("thong_so_ky_thuat")["Dung lượng pin:"]) \
+                        .withColumn("thiet_ke",         col("thong_so_ky_thuat")["Thiết kế:"])
     parsed_df = parsed_df.drop("thong_so_ky_thuat")
 
     # Thuộc tính: Hãng điện thoại
@@ -529,36 +521,26 @@ if __name__ == "__main__":
 
     # Xử lý dữ liệu Kafka
     parsed_df = parse_kafka_data(kafka_df)
+    # parsed_df.show(5, truncate=False)
 
     # Chuyển đổi dữ liệu
     parsed_df = transform_data(parsed_df)
 
-    # query = parsed_df.writeStream \
-    #     .format("csv") \
-    #     .option("path", "../data/processed_data.csv") \
-    #     .option("checkpointLocation", "../data/checkpoint") \
-    #     .outputMode("append") \
-    #     .option("truncate", False) \
-    #     .start()
-
     output_path = "/home/tienanh/Mobile-Data-Pipeline-Engineering/output"
     checkpoint_path = "/home/tienanh/Mobile-Data-Pipeline-Engineering/checkpoints"
 
-    # Đảm bảo rằng bạn đã sử dụng định dạng CSV và chỉ định tên file kết quả
-    # query = parsed_df.writeStream \
-    #     .format("csv") \
-    #     .option("path", output_path) \
-    #     .option("checkpointLocation", checkpoint_path) \
-    #     .option("header", "true") \
-    #     .start()
+    def write_to_csv(batch_df, batch_id):
+        batch_df.write \
+            .mode("append") \
+            .option("header", "true") \
+            .csv()
 
-    parsed_df.write \
-        .format("csv") \
-        .option("path", output_path) \
-        .option("header", "true") \
-        .save()
-    
-    # Chờ stream kết thúc
-    # query.awaitTermination()
+    query = parsed_df.writeStream \
+        .foreachBatch(write_to_csv) \
+        .option("checkpointLocation", checkpoint_path) \
+        .start()
+
+    query.awaitTermination()
+
 
 # python3 etls/mobile_etl.py

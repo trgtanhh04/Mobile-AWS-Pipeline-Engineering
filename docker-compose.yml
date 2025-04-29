@@ -58,6 +58,7 @@ services:
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
       - ./scripts:/opt/airflow/scripts
+      - /home/tienanh/Mobile-Data-Pipeline-Engineering/scripts:/opt/airflow/scripts
     # command: >
     #   bash -c "
     #     airflow db upgrade &&
