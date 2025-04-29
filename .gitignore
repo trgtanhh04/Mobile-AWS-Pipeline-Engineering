@@ -1,8 +1,11 @@
+# File cụ thể
 config/config.conf
 .env
-logs
-data_crawled
-checkpoints
-init-scripts
-__pycache__
-plugins
+
+# Thư mục
+logs/
+data_crawled/
+checkpoints/
+init-scripts/
+__pycache__/
+plugins/
