@@ -227,11 +227,11 @@ def main():
             logger.info("Collecting product links from website...")
             links = collect_product_links(driver, CONFIG['url_link'])
 
-            output_link_csv_dir = os.path.dirname(CONFIG['links_csv'])
-            if not os.path.exists(output_link_csv_dir):
-                os.makedirs(output_link_csv_dir, exist_ok=True)
+            output_dir = os.path.dirname(CONFIG['links_csv'])
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
 
-            pd.DataFrame(links, columns=['links']).to_csv(output_link_csv_dir, index=False)
+            pd.DataFrame(links, columns=['links']).to_csv(CONFIG['links_csv'], index=False)
             logger.info(f"Saved {len(links)} links to {CONFIG['links_csv']}")
         else:
             logger.info(f"Reading links from existing file: {CONFIG['links_csv']}")
@@ -241,10 +241,11 @@ def main():
         logger.info("Starting product scraping...")
 
         product_data = []
-        output_raw_data_dir = os.path.dirname(CONFIG['output_csv'])
 
-        if not os.path.exists(output_raw_data_dir):
-            os.makedirs(output_raw_data_dir, exist_ok=True)
+        output_dir = os.path.dirname(CONFIG['output_csv'])
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+
         for i, link in enumerate(links):
             if not is_valid_url(link):
                 logger.warning(f"Invalid URL: {link}")
@@ -268,11 +269,13 @@ def main():
 
         # Step 3: Save data
         logger.info(f"Saving scraped data to {CONFIG['output_csv']}")
-        with open(output_raw_data_dir, 'w', newline='', encoding='utf-8-sig') as csvfile:
+        logger.info(f"Number of products scraped: {product_data}")
+        with open(CONFIG['output_csv'], 'w', newline='', encoding='utf-8-sig') as csvfile:
             fieldnames = product_data[0].keys()
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(product_data)
+            logger.info(f"Data saved to {CONFIG['output_csv']} successfully.")
 
     finally:
         driver.quit()

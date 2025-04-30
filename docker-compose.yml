@@ -62,6 +62,7 @@ services:
       - ./scripts:/opt/airflow/scripts
       - ./utils:/opt/airflow/utils
       - ./config:/opt/airflow/config
+      - ./data/output:/opt/airflow/data/output
     # command: >
     #   bash -c "
     #     airflow db upgrade &&
@@ -96,6 +97,7 @@ services:
       - ./scripts:/opt/airflow/scripts 
       - ./utils:/opt/airflow/utils
       - ./config:/opt/airflow/config
+      - ./data/output:/opt/airflow/data/output
     depends_on:
       airflow-init:
         condition: service_completed_successfully
@@ -126,6 +128,7 @@ services:
       - ./scripts:/opt/airflow/scripts 
       - ./utils:/opt/airflow/utils
       - ./config:/opt/airflow/config
+      - ./data/output:/opt/airflow/data/output
     depends_on:
       airflow-init:
         condition: service_completed_successfully
@@ -202,16 +205,17 @@ services:
     depends_on:
       - zookeeper
     ports:
+      - "9092:9092"
       - "29092:29092"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:29092 
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092  
     networks:
       - airflow-network
 
