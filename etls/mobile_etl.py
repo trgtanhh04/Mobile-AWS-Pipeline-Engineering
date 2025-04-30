@@ -31,6 +31,7 @@ def consume_from_kafka():
     """
     Sử dụng KafkaConsumer để kiểm tra kết nối trực tiếp và nhận dữ liệu từ Kafka topic.
     """
+    logger.info("Starting Kafka consumer...")
     try:
         # Khởi tạo Kafka consumer
         consumer = KafkaConsumer(
@@ -56,13 +57,16 @@ def init_spark_session():
     """
     Khởi tạo Spark session.
     """
+    logger.info("Initializing Spark session...")
     try:
         spark = SparkSession.builder \
             .appName("MobileETL") \
             .config("spark.driver.memory", "4g") \
             .config("spark.executor.memory", "4g") \
-            .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2") \
+            .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.5") \
+            .config("spark.sql.streaming.checkpointLocation", "/tmp/spark_checkpoints") \
             .getOrCreate()
+                    # .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2") \
         logger.info("Spark session initialized.")
         return spark
     except Exception as e:
@@ -73,6 +77,7 @@ def connect_to_kafka(spark):
     """
     Kết nối đến Kafka và nhận dữ liệu từ topic.
     """
+    logger.info("Connecting to Kafka...")
     try:
         df = spark.readStream \
             .format("kafka") \
@@ -95,6 +100,7 @@ def parse_kafka_data(df):
     """
     Parse dữ liệu Kafka thành các cột đúng định dạng.
     """
+    logger.info("Parsing Kafka data...")
     schema = StructType([
         StructField("Tên sản phẩm", StringType()),
         StructField("Loại điện thoại", StringType()),
@@ -332,6 +338,7 @@ def transform_data(parsed_df):
     """
     Chuyển đổi dữ liệu từ DataFrame.
     """
+    logger.info("Transforming data...")
     renamed_columns = {
         "Tên sản phẩm": "ten",
         "Loại điện thoại": "loai_dien_thoai",
@@ -514,6 +521,8 @@ def transform_data(parsed_df):
 
 if __name__ == "__main__":
     # Khởi tạo Spark session
+    logger.info(f"KAFKA_BOOTSTRAP_SERVERS: {KAFKA_BOOTSTRAP_SERVERS}")
+    logger.info(f"Kafka topic: {TOPIC_PHONE_DATA}")
     spark = init_spark_session()
 
     # Kết nối Kafka
@@ -526,19 +535,16 @@ if __name__ == "__main__":
     # Chuyển đổi dữ liệu
     parsed_df = transform_data(parsed_df)
 
-    output_path = "/home/tienanh/Mobile-Data-Pipeline-Engineering/output"
-    checkpoint_path = "/home/tienanh/Mobile-Data-Pipeline-Engineering/checkpoints"
-
+    output_path = f"{OUTPUT_PATH}/kafka_output"
     def write_to_csv(batch_df, batch_id):
         batch_df.write \
             .mode("append") \
             .option("header", "true") \
-            .csv()
+            .csv(output_path)
 
     query = parsed_df.writeStream \
         .foreachBatch(write_to_csv) \
-        .option("checkpointLocation", checkpoint_path) \
-        .start()
+        .start(output_path)
 
     query.awaitTermination()
 

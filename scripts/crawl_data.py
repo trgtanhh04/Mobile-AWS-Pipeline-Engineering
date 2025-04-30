@@ -180,6 +180,7 @@ def main():
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
+    logger.info(f"Starting crawler {CONFIG['max_links']} links...")
     logger.info("Fetching data...")
     options = webdriver.ChromeOptions()
 
@@ -223,7 +224,7 @@ def main():
 
     try:
         # Step 1: Collect product links
-        if not os.path.exists(CONFIG['links_csv']):
+        try:
             logger.info("Collecting product links from website...")
             links = collect_product_links(driver, CONFIG['url_link'])
 
@@ -233,9 +234,10 @@ def main():
 
             pd.DataFrame(links, columns=['links']).to_csv(CONFIG['links_csv'], index=False)
             logger.info(f"Saved {len(links)} links to {CONFIG['links_csv']}")
-        else:
-            logger.info(f"Reading links from existing file: {CONFIG['links_csv']}")
-            links = pd.read_csv(CONFIG['links_csv'])['links'].tolist()
+        except Exception as e:
+            logger.error(f"Error collecting product links: {e}")
+            # logger.info(f"Reading links from existing file: {CONFIG['links_csv']}")
+            # links = pd.read_csv(CONFIG['links_csv'])['links'].tolist()
 
         # Step 2: Scrape product data
         logger.info("Starting product scraping...")

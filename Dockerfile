@@ -1,42 +1,3 @@
-# FROM apache/airflow:2.7.2
-
-# USER root
-
-# # Cập nhật và cài đặt các gói cần thiết
-# RUN apt-get update && apt-get install -y \
-#     wget curl unzip gnupg lsb-release ca-certificates \
-#     netcat-traditional xvfb fonts-liberation \
-#     libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 \
-#     libcups2 libdbus-1-3 libdrm2 libgbm1 libgtk-3-0 \
-#     libnspr4 libnss3 libxcomposite1 libxdamage1 libxfixes3 \
-#     libxkbcommon0 libxrandr2 xdg-utils libu2f-udev libvulkan1 \
-#     apt-transport-https \
-#     && rm -rf /var/lib/apt/lists/*
-
-# # Cài đặt Google Chrome
-# RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-#     && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-#     && apt-get update \
-#     && apt-get install -y google-chrome-stable \
-#     && apt-get clean \
-#     && rm -rf /var/lib/apt/lists/*
-
-# # Cài đặt ChromeDriver (Sử dụng phiên bản cố định)
-# # 114.0.5735.90
-# RUN CHROMEDRIVER_VERSION="114.0.5735.90" && \
-#     echo "Downloading ChromeDriver version $CHROMEDRIVER_VERSION..." && \
-#     wget -q -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip" && \
-#     unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
-#     chmod +x /usr/local/bin/chromedriver && \
-#     rm /tmp/chromedriver.zip
-
-# # Cài đặt Docker CLI
-# RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - \
-#     && echo "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list \
-#     && apt-get update \
-#     && apt-get install -y docker-ce-cli \
-#     && rm -rf /var/lib/apt/lists/*
-
 FROM apache/airflow:2.7.2
 
 USER root
@@ -111,9 +72,16 @@ RUN groupadd -f docker && usermod -aG docker airflow || true
 # Làm sạch
 RUN apt-get autoremove -y && apt-get clean
 
+ENV PATH="/home/airflow/.local/bin:${PATH}"
+
+# Cài đặt java 11 cho spark
+RUN apt-get update && apt-get install -y openjdk-11-jdk procps
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+
 USER airflow
 
-ENV PATH="/home/airflow/.local/bin:${PATH}"
 
 # Cài các Python packages cần thiết
 RUN pip install --no-cache-dir \
@@ -121,7 +89,8 @@ RUN pip install --no-cache-dir \
     beautifulsoup4==4.12.2 \
     fake_useragent==1.1.3 \
     webdriver-manager==3.8.6 \
-    kafka-python==2.0.2
+    kafka-python==2.0.2 \
+    pyspark==3.5.5 
 
 # Thiết lập thư mục làm việc
 WORKDIR ${AIRFLOW_HOME}
