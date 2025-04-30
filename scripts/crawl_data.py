@@ -12,7 +12,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException, TimeoutException
 from bs4 import BeautifulSoup
-
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 # Configure logging
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 LOG_DIR = os.path.join(os.path.dirname(__file__), "..", "logs")
@@ -172,13 +174,18 @@ def scrape_product_data(driver, link):
         "Đường dẫn": link,
     }
 
+
 def main():
+    # Khởi tạo logger
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
+    logger.info("Fetching data...")
     options = webdriver.ChromeOptions()
 
-    # Add incognito mode like in your successful Colab implementation
+    # Các tùy chọn hiện tại
     options.add_argument('--incognito')
-
-    # Standard options
+    options.add_argument("--headless=new")  # Sử dụng headless mode mới
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--disable-gpu')
     options.add_argument('--disable-blink-features=AutomationControlled')
@@ -189,7 +196,6 @@ def main():
     options.add_argument('--disable-infobars')
     options.add_argument('--disable-extensions')
 
-    # Try to mimic your successful Colab setup more closely
     options.add_experimental_option('prefs', {
         'profile.default_content_setting_values.notifications': 2,
         'profile.default_content_settings.popups': 0,
@@ -198,18 +204,34 @@ def main():
         'download.directory_upgrade': True,
     })
 
-
     logger.info("Crawler started.")
-    driver = webdriver.Chrome(options=options)  # Pass the options here
-    driver.maximize_window()
-    logger.info(f"driver product {driver}")
+
+    # Sử dụng ChromeDriver
+    try:
+        # Sử dụng ChromeDriver cố định
+        service = Service("/usr/local/bin/chromedriver")
+        driver = webdriver.Chrome(service=service, options=options)
+
+        logger.info("ChromeDriver initialized successfully.")
+    except Exception as e:
+        logger.error(f"Failed to initialize ChromeDriver: {e}")
+        return
+
+    # Kiểm tra nếu cần bật maximize_window
+    if '--headless=new' not in options.arguments:
+        driver.maximize_window()
 
     try:
         # Step 1: Collect product links
         if not os.path.exists(CONFIG['links_csv']):
             logger.info("Collecting product links from website...")
             links = collect_product_links(driver, CONFIG['url_link'])
-            pd.DataFrame(links, columns=['links']).to_csv(CONFIG['links_csv'], index=False)
+
+            output_link_csv_dir = os.path.dirname(CONFIG['links_csv'])
+            if not os.path.exists(output_link_csv_dir):
+                os.makedirs(output_link_csv_dir, exist_ok=True)
+
+            pd.DataFrame(links, columns=['links']).to_csv(output_link_csv_dir, index=False)
             logger.info(f"Saved {len(links)} links to {CONFIG['links_csv']}")
         else:
             logger.info(f"Reading links from existing file: {CONFIG['links_csv']}")
@@ -217,7 +239,12 @@ def main():
 
         # Step 2: Scrape product data
         logger.info("Starting product scraping...")
+
         product_data = []
+        output_raw_data_dir = os.path.dirname(CONFIG['output_csv'])
+
+        if not os.path.exists(output_raw_data_dir):
+            os.makedirs(output_raw_data_dir, exist_ok=True)
         for i, link in enumerate(links):
             if not is_valid_url(link):
                 logger.warning(f"Invalid URL: {link}")
@@ -241,7 +268,7 @@ def main():
 
         # Step 3: Save data
         logger.info(f"Saving scraped data to {CONFIG['output_csv']}")
-        with open(CONFIG['output_csv'], 'w', newline='', encoding='utf-8-sig') as csvfile:
+        with open(output_raw_data_dir, 'w', newline='', encoding='utf-8-sig') as csvfile:
             fieldnames = product_data[0].keys()
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
