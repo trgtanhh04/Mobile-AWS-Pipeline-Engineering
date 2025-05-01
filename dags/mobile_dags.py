@@ -156,6 +156,7 @@ default_args = {
     'start_date': datetime(2025, 4, 28),
     'retries': 3,  # Increased retries
     'retry_delay': timedelta(minutes=5),
+    'execution_timeout': timedelta(minutes=30),  # Timeout for each task
 }
 
 # Define DAG
@@ -164,7 +165,7 @@ dag = DAG(
     default_args=default_args,
     description='A simple mobile AWS pipeline',
     schedule_interval='@daily',
-    catchup=False,
+    catchup=False
 )
 
 dag.doc_md = """
@@ -226,8 +227,10 @@ def run_mobile_etl(**kwargs):
                 [sys.executable, etl_path],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True,
+                timeout=1800
             )
+
 
             logger.info("ETL script stdout:\n" + result.stdout)
             logger.error("ETL script stderr:\n" + result.stderr)

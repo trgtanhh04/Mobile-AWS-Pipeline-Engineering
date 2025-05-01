@@ -233,7 +233,7 @@ services:
       - airflow-network
 
   spark-master:
-    image: bitnami/spark:3.5.5
+    image: bitnami/spark:3.1.2
     container_name: spark-master
     restart: always
     environment:
@@ -252,7 +252,7 @@ services:
       - airflow-network
 
   spark-worker:
-    image: bitnami/spark:3.5.5
+    image: bitnami/spark:3.1.2
     container_name: spark-worker
     restart: always
     environment:

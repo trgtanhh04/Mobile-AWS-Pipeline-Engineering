@@ -523,8 +523,13 @@ if __name__ == "__main__":
     # Khởi tạo Spark session
     logger.info(f"KAFKA_BOOTSTRAP_SERVERS: {KAFKA_BOOTSTRAP_SERVERS}")
     logger.info(f"Kafka topic: {TOPIC_PHONE_DATA}")
-    spark = init_spark_session()
 
+    # spark = init_spark_session()
+    spark = SparkSession.builder \
+        .appName("MobileETL") \
+        .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2") \
+        .config("spark.sql.streaming.checkpointLocation", "/tmp/spark_checkpoints") \
+        .getOrCreate()
     # Kết nối Kafka
     kafka_df = connect_to_kafka(spark)
 

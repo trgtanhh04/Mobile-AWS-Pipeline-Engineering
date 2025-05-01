@@ -38,7 +38,7 @@ CONFIG = {
     'output_dir': os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data_crawled')),
     'links_csv': f'{OUTPUT_PATH}/links.csv',
     'output_csv':f'{OUTPUT_PATH}/raw_data.csv',
-    'max_links': 2
+    'max_links': 3
 }
 
 
