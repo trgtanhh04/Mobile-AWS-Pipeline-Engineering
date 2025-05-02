@@ -9,3 +9,9 @@ checkpoints/
 init-scripts/
 __pycache__/
 plugins/
+
+# File cụ thể
+pre-processing.ipynb
+test.py
+instructions.txt
+man
