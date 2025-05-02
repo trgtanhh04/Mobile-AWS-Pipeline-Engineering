@@ -10,6 +10,7 @@ x-airflow-common:
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
     AIRFLOW__CORE__FERNET_KEY: '92FtMYkuhHkFCcswu_c0IfPWZ0CUY1nHp_D-jQWADLU='
+    AIRFLOW__CORE__SECRET_KEY: '92FtMYkuhHkFCcswu_c0IfPWZ0CUY1nHp_D-jQWADLU='
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.session,airflow.api.auth.backend.basic_auth'
@@ -69,7 +70,7 @@ services:
     #     airflow db upgrade &&
     #     airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com
     #   "
-    command: bash -c "airflow db upgrade && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com && airflow connections delete 'postgres_warehouse' || true && airflow connections add 'postgres_warehouse' --conn-type 'postgres' --conn-login 'postgres' --conn-password 'postgres' --conn-host 'postgres' --conn-port '5432' --conn-schema 'movie_warehouse'"
+    command: bash -c "airflow db upgrade && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com && airflow connections delete 'postgres_warehouse' || true && airflow connections add 'postgres_warehouse' --conn-type 'postgres' --conn-login 'postgres' --conn-password 'postgres' --conn-host 'postgres' --conn-port '5432' --conn-schema 'mobile_warehouse'"
     depends_on:
       postgres-airflow:
         condition: service_healthy
@@ -89,6 +90,7 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
+    
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
@@ -228,7 +230,17 @@ services:
     depends_on:
       - kafka
     entrypoint: [ '/bin/sh', '-c' ]
-    command: "sleep 10 && kafka-topics --create --topic test-topic --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1"
+    command: |
+      "
+      # blocks until kafka is reachable
+      kafka-topics --bootstrap-server kafka:9092 --list
+
+      echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic mobile_topic --partitions 1 --replication-factor 1
+
+      echo -e 'Successfully created the following topics:'
+      kafka-topics --bootstrap-server kafka:9092 --list
+      "
     networks:
       - airflow-network
 

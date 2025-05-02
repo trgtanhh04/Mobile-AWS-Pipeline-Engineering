@@ -40,20 +40,43 @@ def reset_kafka_topic(bootstrap_servers, topic):
     """
     admin_client = KafkaAdminClient(bootstrap_servers=bootstrap_servers)
     try:
-        # Xóa topic nếu tồn tại
         logger.info(f"Checking if topic '{topic}' exists...")
         topics = admin_client.list_topics()
         if topic in topics:
             logger.info(f"Topic '{topic}' already exists. Deleting it...")
             admin_client.delete_topics([topic])
             logger.info(f"Topic '{topic}' deleted successfully.")
-        
+        else:
+            logger.info(f"Topic '{topic}' does not exist. Proceeding to create it...")
+
         # Tạo lại topic
         logger.info(f"Creating topic '{topic}'...")
         admin_client.create_topics([NewTopic(name=topic, num_partitions=1, replication_factor=1)])
         logger.info(f"Topic '{topic}' created successfully.")
     except Exception as e:
         logger.error(f"Failed to reset topic '{topic}': {e}")
+    finally:
+        admin_client.close()
+
+def ensure_kafka_topic(bootstrap_servers, topic):
+    """
+    Kiểm tra và tạo topic Kafka nếu chưa tồn tại.
+    Args:
+        bootstrap_servers (str): Kafka bootstrap servers.
+        topic (str): Kafka topic name.
+    """
+    admin_client = KafkaAdminClient(bootstrap_servers=bootstrap_servers)
+    try:
+        logger.info(f"Checking if topic '{topic}' exists...")
+        topics = admin_client.list_topics()
+        if topic not in topics:
+            logger.info(f"Topic '{topic}' does not exist. Creating it...")
+            admin_client.create_topics([NewTopic(name=topic, num_partitions=1, replication_factor=1)])
+            logger.info(f"Topic '{topic}' created successfully.")
+        else:
+            logger.info(f"Topic '{topic}' already exists. No action taken.")
+    except Exception as e:
+        logger.error(f"Failed to ensure topic '{topic}': {e}")
     finally:
         admin_client.close()
 
@@ -67,7 +90,7 @@ def send_to_kafka(data, bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS, topic=TOPIC_P
         topic (str): Kafka topic name.
     """
      # Reset topic trước khi gửi
-    reset_kafka_topic(bootstrap_servers, topic)
+    # ensure_kafka_topic(bootstrap_servers, topic)
 
     producer = KafkaProducer(
         bootstrap_servers=bootstrap_servers,
@@ -75,7 +98,8 @@ def send_to_kafka(data, bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS, topic=TOPIC_P
     )
     try:
         for record in data:
-            producer.send(topic, value=record)
+            future  = producer.send(topic, value=record)
+            future.get(timeout=10)  # Wait for the send to complete
             logger.info(f"Sent record to Kafka topic '{topic}': {record}")
         producer.flush()
         logger.info(f"All records have been sent to Kafka topic '{topic}'.")

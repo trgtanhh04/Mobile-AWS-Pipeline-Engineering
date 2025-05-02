@@ -38,7 +38,7 @@ CONFIG = {
     'output_dir': os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data_crawled')),
     'links_csv': f'{OUTPUT_PATH}/links.csv',
     'output_csv':f'{OUTPUT_PATH}/raw_data.csv',
-    'max_links': 3
+    'max_links': 2
 }
 
 
@@ -263,6 +263,13 @@ def main():
         # print("product_data", product_data)
 
         logger.info("Sending scraped data to Kafka...")
+        logger.info(f"Number of products scraped: {len(product_data)}")
+        if not product_data:
+            logger.warning("No product data to send to Kafka.")
+            return
+        logger.info(f"Sending {product_data}")
+        logger.info(f"Kafka bootstrap servers: {KAFKA_BOOTSTRAP_SERVERS}")
+        logger.info(f"Kafka topic: {TOPIC_PHONE_DATA}")
         try:
             send_to_kafka(data=product_data, bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS, topic=TOPIC_PHONE_DATA)
             logger.info("Data sent to Kafka successfully.")

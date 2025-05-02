@@ -14,14 +14,26 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 LOG_DIR = os.path.join(os.path.dirname(__file__), "..", "logs")
 os.makedirs(LOG_DIR, exist_ok=True)
 
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+#     handlers=[
+#         logging.FileHandler(os.path.join(LOG_DIR, "mobile_etl.log"), 'a'),
+#         logging.StreamHandler()
+#     ]
+# )
+# logger = logging.getLogger(__name__)
+
+# Cấu hình logger
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(os.path.join(LOG_DIR, "mobile_etl.log"), 'a'),
-        logging.StreamHandler()
+        logging.StreamHandler()  # Ghi log ra console
     ]
 )
+
+# Tạo logger
 logger = logging.getLogger(__name__)
 
 from utils.constants import KAFKA_BOOTSTRAP_SERVERS, TOPIC_PHONE_DATA
@@ -39,7 +51,7 @@ def consume_from_kafka():
             bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS,
             auto_offset_reset='earliest',  # Bắt đầu đọc từ đầu
             enable_auto_commit=True,
-            group_id='mobile-group'
+            group_id='mobile_group'
         )
         
         logger.info(f"Started consuming messages from Kafka topic: {TOPIC_PHONE_DATA}")
@@ -81,10 +93,9 @@ def connect_to_kafka(spark):
     try:
         df = spark.readStream \
             .format("kafka") \
-            .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS) \
-            .option("subscribe", TOPIC_PHONE_DATA) \
+            .option("kafka.bootstrap.servers", 'kafka:9092') \
+            .option("subscribe", "mobile_topic") \
             .option("startingOffsets", "latest") \
-            .option("failOnDataLoss", "false") \
             .load()
 
         # print(df.head())
@@ -519,39 +530,111 @@ def transform_data(parsed_df):
     return parsed_df
 
 
-if __name__ == "__main__":
-    # Khởi tạo Spark session
-    logger.info(f"KAFKA_BOOTSTRAP_SERVERS: {KAFKA_BOOTSTRAP_SERVERS}")
-    logger.info(f"Kafka topic: {TOPIC_PHONE_DATA}")
+# if __name__ == "__main__":
+#     # Khởi tạo Spark session
+#     try:
+#         logger.info(f"KAFKA_BOOTSTRAP_SERVERS: {KAFKA_BOOTSTRAP_SERVERS}")
+#         logger.info(f"Kafka topic: {TOPIC_PHONE_DATA}")
 
-    # spark = init_spark_session()
-    spark = SparkSession.builder \
-        .appName("MobileETL") \
-        .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2") \
-        .config("spark.sql.streaming.checkpointLocation", "/tmp/spark_checkpoints") \
-        .getOrCreate()
-    # Kết nối Kafka
-    kafka_df = connect_to_kafka(spark)
+#         # spark = init_spark_session()
+#         spark = SparkSession.builder \
+#             .appName("MobileETL") \
+#             .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2") \
+#             .config("spark.sql.streaming.checkpointLocation", "/tmp/spark_checkpoints") \
+#             .getOrCreate()
+#         # Kết nối Kafka
+#         kafka_df = connect_to_kafka(spark)
+#         kafka_df.printSchema()
 
-    # Xử lý dữ liệu Kafka
-    parsed_df = parse_kafka_data(kafka_df)
-    # parsed_df.show(5, truncate=False)
+#         # Xử lý dữ liệu Kafka
+#         parsed_df = parse_kafka_data(kafka_df)
+#         # parsed_df.show(5, truncate=False)
 
-    # Chuyển đổi dữ liệu
-    parsed_df = transform_data(parsed_df)
+#         # Chuyển đổi dữ liệu
+#         parsed_df = transform_data(parsed_df)
 
-    output_path = f"{OUTPUT_PATH}/kafka_output"
-    def write_to_csv(batch_df, batch_id):
-        batch_df.write \
-            .mode("append") \
-            .option("header", "true") \
-            .csv(output_path)
+#         output_path = f"{OUTPUT_PATH}/kafka_output"
+#         def write_to_csv(batch_df, batch_id):
+#             if batch_df.count() == 0:
+#                 logger.warning("No data in this batch to write.")
+#             else:
+#                 batch_df.write \
+#                     .mode("append") \
+#                     .option("header", "true") \
+#                     .csv(output_path)
 
-    query = parsed_df.writeStream \
-        .foreachBatch(write_to_csv) \
-        .start(output_path)
 
-    query.awaitTermination()
-
+#         query = parsed_df.writeStream \
+#             .foreachBatch(write_to_csv) \
+#             .start(output_path)
+        
+#         query.awaitTermination()
+#     except Exception as e:
+#         logger.error(f"Error in main: {e}")
+#         raise e
 
 # python3 etls/mobile_etl.py
+
+if __name__ == "__main__":
+    # Khởi tạo Spark session
+    try:
+        logger.info(f"KAFKA_BOOTSTRAP_SERVERS: {KAFKA_BOOTSTRAP_SERVERS}")
+        logger.info(f"Kafka topic: {TOPIC_PHONE_DATA}")
+
+        # Tạo Spark session
+        spark = SparkSession.builder \
+            .appName("MobileETL") \
+            .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2") \
+            .config("spark.sql.streaming.checkpointLocation", "/tmp/spark_checkpoints") \
+            .getOrCreate()
+
+        # Kết nối Kafka
+        kafka_df = connect_to_kafka(spark)
+        kafka_df.printSchema()
+
+        # Lấy hai thuộc tính đầu tiên từ dữ liệu Kafka
+        def parse_kafka_data_test(kafka_df):
+            schema = StructType([
+                StructField("Tên sản phẩm", StringType()),
+                StructField("Loại điện thoại", StringType()),
+                StructField("Màu sắc - Phiên bản bộ nhớ - Giá tương ứng", ArrayType(
+                    ArrayType(StringType())  # Đây là danh sách các danh sách nhỏ [Màu sắc, Phiên bản, Giá, Giá cũ]
+                )),
+                StructField("Thời gian bảo hành", StringType()),
+                StructField("Thông số kỹ thuật", StringType()),  # Thông số kỹ thuật hiện là JSON dạng String
+                StructField("Đánh giá", StringType()),
+                StructField("Số lượt đánh giá và hỏi đáp", StringType()),
+                StructField("Đường dẫn", StringType())
+            ])
+            parsed_df = kafka_df.selectExpr("CAST(value AS STRING)") \
+                .select(from_json(col("value"), schema).alias("data")) \
+                .select("data.*")
+            return parsed_df
+
+        logger.info("Parsed Kafka data.")
+
+        parsed_df = parse_kafka_data_test(kafka_df)
+        parsed_df.printSchema()
+
+        # Ghi dữ liệu ra file CSV
+        output_path = f"{OUTPUT_PATH}/kafka_output"
+
+        def write_to_csv(batch_df, batch_id):
+            if batch_df.count() == 0:
+                logger.warning("No data in this batch to write.")
+            else:
+                logger.info(f"Writing batch {batch_id} to CSV.")
+                batch_df.write \
+                    .mode("append") \
+                    .option("header", "true") \
+                    .csv(output_path)
+
+        query = parsed_df.writeStream \
+            .foreachBatch(write_to_csv) \
+            .start()
+
+        query.awaitTermination()
+
+    except Exception as e:
+        logger.error(f"Error in main: {e}")
+        raise e
