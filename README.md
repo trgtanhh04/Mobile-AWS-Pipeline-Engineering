@@ -91,6 +91,7 @@ Dependency flow:
 <p align="center">
   <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/workFlow.png" width="100%" alt="airflow">
 </p>
+
 ```
 run_crawl_data -> run_etl_mobile -> run_etl_aws
 ```
@@ -118,11 +119,19 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
 ### **4. Uploading to AWS**
 - **AWS S3**:
   - Cleaned data is first uploaded to an S3 bucket for staging.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/S3.png" width="100%" alt="airflow">
+</p>
+
+
 - **Data Warehouse**:
   - Data in S3 is further processed and queried using:
     - **AWS Glue**: For cataloging and metadata management.
     - **AWS Athena**: For running SQL queries on S3 data.
     - **AWS Redshift**: As a data warehouse for advanced analytics and machine learning.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/glue.png" width="100%" alt="airflow">
+</p>
 
 ---
 
