@@ -65,7 +65,7 @@ Mobile-AWS-Pipeline-Engineering/
 ## **Pipeline Architecture**
 
 <p align="center">
-  <img src="https://github.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/blob/main/image_for_project/Data_Pipeline_Achitechture.png" width="100%" height="150%" alt="Pipeline Architecture">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/blob/main/imageForProject/Data_Pipeline_Achitechture.png" width="100%" alt="airflow">
 </p>
 
 The architecture consists of the following key components:
