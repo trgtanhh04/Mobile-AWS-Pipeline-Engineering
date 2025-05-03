@@ -611,7 +611,10 @@ if __name__ == "__main__":
             .foreachBatch(write_to_csv) \
             .start()
 
-        query.awaitTermination()
+        # query.awaitTermination()
+        import time
+        time.sleep(180)
+        query.stop()
 
     except Exception as e:
         logger.error(f"Error in main: {e}")

@@ -9,7 +9,10 @@ checkpoints/
 init-scripts/
 __pycache__/
 plugins/
-
+jars/
+output_csv/
+crawler/
+utils/__pycache__/
 # File cụ thể
 pre-processing.ipynb
 test.py
