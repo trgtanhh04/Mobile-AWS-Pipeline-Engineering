@@ -24,20 +24,40 @@ The ultimate goal is to create an application that provides professional users w
 
 ```
 Mobile-AWS-Pipeline-Engineering/
+├── config/                     # Configuration files for environment variables and app settings
 │
-├── airflow/                # Contains Airflow DAGs and scripts
-├── spark_jobs/             # Spark scripts for ETL processes
-├── kafka/                  # Kafka producer and consumer scripts
-├── aws_scripts/            # Scripts for AWS Glue, Athena, and Redshift
-├── models/                 # Machine learning models for price prediction
-├── data/
-│   ├── raw/                # Raw data collected from the web
-│   ├── processed/          # Cleaned and transformed data
+├── dag/                        # Contains Airflow DAGs and related scripts
+│   └── mobile_pipeline_dag.py  # Main Airflow DAG for orchestrating the pipeline
 │
-├── image_for_project/      # Architecture diagrams and images
-├── utils/                  # Utility scripts (e.g., helper functions, config management)
-├── README.md               # Project documentation
-└── requirements.txt        # Python dependencies
+├── data/                       # Storage for data during the ETL process
+│   ├── raw/                    # Unprocessed, raw data collected from sources
+│   ├── staging/                # Intermediate data (from Kafka staging)
+│   └── processed/              # Cleaned and transformed data ready for upstream applications
+│
+├── etl/                        # ETL scripts for data processing
+│   ├── aws_etl.py              # ETL logic for AWS (e.g., uploading to S3, querying Athena)
+│   └── mobile_etl.py           # ETL logic for mobile data (e.g., cleaning, feature engineering)
+│
+├── image_for_project/          # Visual assets for project documentation
+│
+├── notebooks/                  # Jupyter notebooks for exploratory data analysis (EDA) and modeling
+│   ├── 1.1-data-exploring.ipynb             # Notebook for exploring trends in the data
+│   ├── 1.2-data-visualizations.ipynb        # Notebook for advanced data visualizations
+│   ├── 1.3-data-analyzing.ipynb             # Notebook for statistical and feature analysis
+│   └── 1.4-data-modelling.ipynb             # Notebook for building predictive models
+│
+├── scripts/                    # Standalone scripts for specific tasks
+│   ├── crawl_data.py           # Script for crawling data from MobileCity.vn
+│   └── kafka_listening_staging.py # Script for Kafka consumer to handle staging data
+│
+├── utils/                      # Utility modules for reusable code
+│   └── constants.py            # Constants and configuration keys used across the project
+│
+├── Dockerfile                  # Dockerfile for building the project container
+├── docker-compose.yml          # Docker Compose file for managing multi-container setup
+├── README.md                   # Project documentation
+├── requirements.txt            # Python dependencies for the project
+└── LICENSE                     # License for the project
 ```
 
 ---
@@ -122,59 +142,117 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
 - Apache Kafka
 - Apache Airflow
 - AWS CLI configured with proper credentials
+## **Setup Instructions**
 
-### **Steps**
-1. Clone the repository:
+Follow the steps below to set up and run the project:
+
+### **1. Clone the Repository**
+First, clone the repository to your local machine:
+```bash
+git clone https://github.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering.git
+cd Mobile-AWS-Pipeline-Engineering
+```
+
+---
+
+### **2. Install Docker**
+- **Download Docker Desktop**:
+  - Go to the [Docker Desktop website](https://www.docker.com/products/docker-desktop/) and download the version suitable for your operating system.
+  - Follow the instructions on the website to install Docker Desktop.
+- **Verify Docker Installation**:
+  - Run the following command to ensure Docker is installed and running:
+    ```bash
+    docker --version
+    ```
+
+---
+
+### **3. Build the Docker Environment**
+Use the `Dockerfile` and `docker-compose.yml` to set up the environment:
+1. Build the Docker image:
    ```bash
-   git clone https://github.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering.git
-   cd Mobile-AWS-Pipeline-Engineering
+   docker build -t mobile-aws-pipeline .
    ```
-2. Install dependencies:
+2. Start the services using Docker Compose:
    ```bash
-   pip install -r requirements.txt
+   docker-compose up -d
    ```
-3. Start Airflow:
+   This will start all necessary containers, such as Apache Airflow, Kafka, and any other services defined in the `docker-compose.yml`.
+
+---
+
+### **4. Prerequisites**
+Ensure you have the following prerequisites installed locally:
+- **Java 11**:
+  - Required for running Spark and other Java-based tools.
+  - Verify installation:
+    ```bash
+    java -version
+    ```
+  - If not installed, download and install from [AdoptOpenJDK](https://adoptopenjdk.net/).
+- **Python 3.8 or higher**:
+  - Required for running the Python scripts and notebooks.
+  - Verify installation:
+    ```bash
+    python --version
+    ```
+  - Install necessary Python dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+---
+
+### **5. Set Up Airflow**
+1. Initialize the Airflow database:
    ```bash
    airflow db init
+   ```
+2. Start the Airflow scheduler:
+   ```bash
    airflow scheduler
+   ```
+3. Start the Airflow webserver:
+   ```bash
    airflow webserver
    ```
-4. Start Kafka:
-   ```bash
-   bin/kafka-server-start.sh config/server.properties
-   ```
-5. Run the pipeline:
-   - Trigger DAGs in Airflow to execute the pipeline.
+4. Access the Airflow UI:
+   - Open your browser and navigate to `http://localhost:8080`.
 
 ---
 
-## **Future Work**
-1. **Enhance Machine Learning Models**:
-   - Improve the accuracy of price prediction and recommendation systems.
-2. **Integrate Real-time Features**:
-   - Use streaming data pipelines for near real-time recommendations.
-3. **Expand Data Sources**:
-   - Include additional data sources to enrich the dataset.
-4. **Improve System Scalability**:
-   - Use Kubernetes to orchestrate Spark, Kafka, and other services for better scalability.
+### **6. Start Kafka**
+1. Start the Kafka service:
+   ```bash
+   docker exec -it kafka kafka-server-start.sh config/server.properties
+   ```
+2. Verify Kafka is running by listing topics:
+   ```bash
+   docker exec -it kafka kafka-topics.sh --list --zookeeper zookeeper:2181
+   ```
 
 ---
 
-## **Contributing**
-Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Commit your changes and push:
-   ```bash
-   git commit -m "Add your message"
-   git push origin feature/your-feature-name
-   ```
-4. Submit a pull request.
+### **7. Run the ETL Pipeline**
+1. Trigger the Airflow DAG to execute the pipeline:
+   - Go to the Airflow UI and activate the DAG named `mobile_pipeline_dag`.
+2. Monitor the progress in the Airflow UI.
 
 ---
 
-## **License**
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+### **8. Access AWS Services**
+- **S3 Buckets**:
+  - Processed data will be uploaded to your configured S3 bucket.
+- **Glue and Athena**:
+  - Use AWS Glue to catalog the data and Athena to query it.
+- **Redshift**:
+  - Load the processed data into Redshift for further analysis.
+
+---
+
+### **9. Verify Everything**
+Ensure all components (Airflow, Kafka, Spark, AWS) are running and integrated properly. Test the pipeline by processing a small dataset and verifying the output.
+
+---
+
+By following these steps, you can set up the project environment and start working on the data pipeline. For any issues or troubleshooting, refer to the relevant logs or documentation.e MIT License. See the `LICENSE` file for more details.
