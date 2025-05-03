@@ -126,7 +126,7 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
 
 - **Data Warehouse**:
   - Data in S3 is further processed and queried using:
-    - **AWS Glue**: For cataloging and metadata management.
+    - **AWS Glue ETL**: For cataloging and metadata management.
    <p align="center">
      <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/glue.png" width="80%" alt="airflow">
    </p>
