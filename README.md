@@ -89,7 +89,7 @@ The following tasks are orchestrated and managed via Apache Airflow:
 
 Dependency flow:
 <p align="center">
-  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/airflow_ui.png" width="100%" alt="airflow">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/workFlow.png" width="100%" alt="airflow">
 </p>
 ```
 run_crawl_data -> run_etl_mobile -> run_etl_aws
