@@ -88,6 +88,9 @@ The following tasks are orchestrated and managed via Apache Airflow:
 3. `run_etl_aws`: Task to upload processed data to AWS services for further analysis.
 
 Dependency flow:
+<p align="center">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/airflow_ui.png" width="100%" alt="airflow">
+</p>
 ```
 run_crawl_data -> run_etl_mobile -> run_etl_aws
 ```
