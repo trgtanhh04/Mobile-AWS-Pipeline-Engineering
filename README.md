@@ -102,10 +102,10 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
 
 ### **1. Data Collection**
 - A crawler is scheduled to periodically scrape mobile phone data from multiple sources, ensuring comprehensive data coverage.
-- The crawler is implemented using Python's `BeautifulSoup` and `Scrapy`.
+- The crawler is implemented using Python's `BeautifulSoup` and `Selenium`.
 
 ### **2. Raw Data Storage**
-- Instead of traditional data lakes like HDFS or PostgreSQL, raw data is stored in Kafka topics. This approach ensures:
+- Instead of traditional **data lakes like HDFS or PostgreSQL**, raw data is stored in **Kafka topics**. This approach ensures:
   - Faster data retrieval times.
   - Better scalability for real-time data processing.
 
