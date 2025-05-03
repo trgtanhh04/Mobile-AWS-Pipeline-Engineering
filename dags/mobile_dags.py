@@ -5,16 +5,20 @@ import os
 import sys
 from airflow.operators.python import PythonOperator
 from airflow.utils.log.logging_mixin import LoggingMixin
-from utils.constants import KAFKA_BOOTSTRAP_SERVERS, TOPIC_PHONE_DATA, AWS_BUCKET_NAME, AWS_ACCESS_KEY_ID, AWS_ACCESS_KEY
-from etls.aws_etl import connect_to_s3, create_bucket_if_not_exits, upload_to_s3
 
 # Airflow Logging
 logger = LoggingMixin().log
 
 # Environment Variables
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 scripts_folder = os.getenv('SCRIPTS_FOLDER', "/opt/airflow/scripts")
 etl_folder = os.getenv('ETL_FOLDER', "/opt/airflow/etls")
 data_folder = os.getenv('DATA_FOLDER', "/opt/airflow/data")
+
+# AWS Configuration
+from utils.constants import AWS_BUCKET_NAME
+from etls.aws_etl import connect_to_s3, create_bucket_if_not_exits, upload_to_s3
+
 
 # Default DAG arguments
 default_args = {
@@ -23,7 +27,7 @@ default_args = {
     'start_date': datetime(2025, 4, 28),
     'retries': 3,
     'retry_delay': timedelta(minutes=5),
-    'execution_timeout': timedelta(minutes=30),
+    'execution_timeout': timedelta(hours=2)
 }
 
 # Define DAG
@@ -117,8 +121,8 @@ def run_aws_etl(**kwargs):
         create_bucket_if_not_exits(s3, AWS_BUCKET_NAME)
         
         # Upload file to S3
-        local_file_path = os.path.join(data_folder, 'ouput/raw_data.csv')
-        upload_to_s3(s3, local_file_path, AWS_BUCKET_NAME, 'raw/data.csv')
+        local_file_path = os.path.join(data_folder, 'output/processed_data.csv')
+        upload_to_s3(s3, local_file_path, AWS_BUCKET_NAME, 'raw/processed_data.csv')
         
         logger.info("AWS ETL task completed successfully.")
     except Exception as e:

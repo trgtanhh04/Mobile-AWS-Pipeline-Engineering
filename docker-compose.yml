@@ -22,6 +22,7 @@ x-airflow-common:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
+    - ./utils:/opt/airflow/utils
     - /var/run/docker.sock:/var/run/docker.sock
   group_add:
     - docker
@@ -65,6 +66,7 @@ services:
       - ./config:/opt/airflow/config
       - ./data/output:/opt/airflow/data/output
       - ./etls:/opt/airflow/etls
+      - ./jars:/opt/airflow/jars
     # command: >
     #   bash -c "
     #     airflow db upgrade &&
@@ -102,6 +104,7 @@ services:
       - ./config:/opt/airflow/config
       - ./data/output:/opt/airflow/data/output
       - ./etls:/opt/airflow/etls
+      - ./jars:/opt/airflow/jars
     depends_on:
       airflow-init:
         condition: service_completed_successfully
@@ -134,6 +137,7 @@ services:
       - ./config:/opt/airflow/config
       - ./data/output:/opt/airflow/data/output
       - ./etls:/opt/airflow/etls
+      - ./jars:/opt/airflow/jars
     depends_on:
       airflow-init:
         condition: service_completed_successfully
@@ -230,17 +234,18 @@ services:
     depends_on:
       - kafka
     entrypoint: [ '/bin/sh', '-c' ]
-    command: |
-      "
-      # blocks until kafka is reachable
-      kafka-topics --bootstrap-server kafka:9092 --list
+    command: >
+      sh -c '
+      echo "Waiting for Kafka...";
+      while ! nc -z kafka 9092; do sleep 1; done;
 
-      echo -e 'Creating kafka topics'
-      kafka-topics --bootstrap-server kafka:9092 --create --if-not-exists --topic mobile_topic --partitions 1 --replication-factor 1
+      kafka-topics --bootstrap-server kafka:9092 --create \
+        --if-not-exists --topic mobile_topic --partitions 1 --replication-factor 1;
 
-      echo -e 'Successfully created the following topics:'
-      kafka-topics --bootstrap-server kafka:9092 --list
-      "
+      echo "Topics in Kafka:";
+      kafka-topics --bootstrap-server kafka:9092 --list;
+      '
+
     networks:
       - airflow-network
 
@@ -260,6 +265,8 @@ services:
     volumes:
       - ./scripts:/opt/spark/scripts
       - ./logs:/opt/spark/logs
+      - ./jars:/opt/airflow/jars
+      - ./etls:/opt/airflow/etls
     networks:
       - airflow-network
 
@@ -276,6 +283,11 @@ services:
       - SPARK_RPC_ENCRYPTION_ENABLED=no
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./scripts:/opt/spark/scripts
+      - ./logs:/opt/spark/logs
+      - ./etls:/opt/airflow/etls
+      - ./jars:/opt/airflow/jars
     depends_on:
       - spark-master
     networks:

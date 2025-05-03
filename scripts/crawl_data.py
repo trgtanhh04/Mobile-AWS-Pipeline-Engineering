@@ -30,7 +30,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 from utils.constants import INPUT_PATH, OUTPUT_PATH
-from kafka_listening_staging import send_to_kafka
+from kafka_listening_staging import send_to_kafka, reset_kafka_topic
 from utils.constants import KAFKA_BOOTSTRAP_SERVERS, TOPIC_PHONE_DATA
 
 CONFIG = {
@@ -38,7 +38,7 @@ CONFIG = {
     'output_dir': os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data_crawled')),
     'links_csv': f'{OUTPUT_PATH}/links.csv',
     'output_csv':f'{OUTPUT_PATH}/raw_data.csv',
-    'max_links': 2
+    'max_links': 3
 }
 
 
@@ -175,78 +175,56 @@ def scrape_product_data(driver, link):
     }
 
 
+def ensure_directory_exists(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+
+
 def main():
     # Khởi tạo logger
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
 
     logger.info(f"Starting crawler {CONFIG['max_links']} links...")
-    logger.info("Fetching data...")
-    options = webdriver.ChromeOptions()
 
-    # Các tùy chọn hiện tại
+    # Cấu hình Selenium
+    options = webdriver.ChromeOptions()
     options.add_argument('--incognito')
-    options.add_argument("--headless=new")  # Sử dụng headless mode mới
+    options.add_argument("--headless=new")
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--disable-gpu')
-    options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-blink-features=AutomationControlled')
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
-    options.add_argument('--disable-infobars')
-    options.add_argument('--disable-extensions')
 
-    options.add_experimental_option('prefs', {
-        'profile.default_content_setting_values.notifications': 2,
-        'profile.default_content_settings.popups': 0,
-        'download.default_directory': "/tmp",
-        'download.prompt_for_download': False,
-        'download.directory_upgrade': True,
-    })
-
-    logger.info("Crawler started.")
-
-    # Sử dụng ChromeDriver
+    # Khởi tạo ChromeDriver
     try:
-        # Sử dụng ChromeDriver cố định
         service = Service("/usr/local/bin/chromedriver")
         driver = webdriver.Chrome(service=service, options=options)
-
         logger.info("ChromeDriver initialized successfully.")
     except Exception as e:
         logger.error(f"Failed to initialize ChromeDriver: {e}")
         return
 
-    # Kiểm tra nếu cần bật maximize_window
-    if '--headless=new' not in options.arguments:
-        driver.maximize_window()
-
     try:
-        # Step 1: Collect product links
         try:
             logger.info("Collecting product links from website...")
             links = collect_product_links(driver, CONFIG['url_link'])
 
-            output_dir = os.path.dirname(CONFIG['links_csv'])
-            if not os.path.exists(output_dir):
-                os.makedirs(output_dir)
-
+            # Đảm bảo thư mục tồn tại
+            ensure_directory_exists(os.path.dirname(CONFIG['links_csv']))
             pd.DataFrame(links, columns=['links']).to_csv(CONFIG['links_csv'], index=False)
             logger.info(f"Saved {len(links)} links to {CONFIG['links_csv']}")
         except Exception as e:
             logger.error(f"Error collecting product links: {e}")
-            # logger.info(f"Reading links from existing file: {CONFIG['links_csv']}")
-            # links = pd.read_csv(CONFIG['links_csv'])['links'].tolist()
+            return
 
-        # Step 2: Scrape product data
-        logger.info("Starting product scraping...")
 
         product_data = []
-
-        output_dir = os.path.dirname(CONFIG['output_csv'])
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
+        ensure_directory_exists(os.path.dirname(CONFIG['output_csv']))
 
         for i, link in enumerate(links):
             if not is_valid_url(link):
@@ -259,36 +237,31 @@ def main():
             except Exception as e:
                 logger.error(f"Error scraping {link}: {e}")
 
-        # Send data to Kafka
-        # print("product_data", product_data)
 
-        logger.info("Sending scraped data to Kafka...")
-        logger.info(f"Number of products scraped: {len(product_data)}")
-        if not product_data:
-            logger.warning("No product data to send to Kafka.")
-            return
-        logger.info(f"Sending {product_data}")
-        logger.info(f"Kafka bootstrap servers: {KAFKA_BOOTSTRAP_SERVERS}")
-        logger.info(f"Kafka topic: {TOPIC_PHONE_DATA}")
-        try:
-            send_to_kafka(data=product_data, bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS, topic=TOPIC_PHONE_DATA)
-            logger.info("Data sent to Kafka successfully.")
-        except Exception as e:
-            logger.error(f"Failed to send data to Kafka: {e}")
+        if product_data:
+            try:
+                # reset_kafka_topic(bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS, topic=TOPIC_PHONE_DATA)
+                send_to_kafka(data=product_data, bootstrap_servers=KAFKA_BOOTSTRAP_SERVERS, topic=TOPIC_PHONE_DATA)
+                logger.info("Data sent to Kafka successfully.")
+            except Exception as e:
+                logger.error(f"Failed to send data to Kafka: {e}")
 
-        # Step 3: Save data
-        logger.info(f"Saving scraped data to {CONFIG['output_csv']}")
-        logger.info(f"Number of products scraped: {product_data}")
-        with open(CONFIG['output_csv'], 'w', newline='', encoding='utf-8-sig') as csvfile:
-            fieldnames = product_data[0].keys()
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(product_data)
-            logger.info(f"Data saved to {CONFIG['output_csv']} successfully.")
+        if product_data:
+            try:
+                with open(CONFIG['output_csv'], 'w', newline='', encoding='utf-8-sig') as csvfile:
+                    fieldnames = product_data[0].keys()
+                    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                    writer.writeheader()
+                    writer.writerows(product_data)
+                    logger.info(f"Data saved to {CONFIG['output_csv']} successfully.")
+            except Exception as e:
+                logger.error(f"Failed to save data to CSV: {e}")
+        else:
+            logger.warning("No product data to save.")
 
     finally:
         driver.quit()
+        logger.info("ChromeDriver closed.")
 
 if __name__ == "__main__":
     main()
-    index =0

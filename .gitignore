@@ -13,5 +13,5 @@ plugins/
 # File cụ thể
 pre-processing.ipynb
 test.py
-instructions.txt
-man
+instruction.txt
+main
