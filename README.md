@@ -120,7 +120,7 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
 - **AWS S3**:
   - Cleaned data is first uploaded to an S3 bucket for staging.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/S3.png" width="70%" alt="airflow">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/S3.png" width="80%" alt="airflow">
 </p>
 
 
@@ -128,12 +128,12 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
   - Data in S3 is further processed and queried using:
     - **AWS Glue**: For cataloging and metadata management.
    <p align="center">
-     <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/glue.png" width="100%" alt="airflow">
+     <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/glue.png" width="80%" alt="airflow">
    </p>
 
     - **AWS Athena**: For running SQL queries on S3 data.
     <p align="center">
-     <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/athena.png" width="100%" alt="airflow">
+     <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/athena.png" width="80%" alt="airflow">
    </p>
   
     - **AWS Redshift**: As a data warehouse for advanced analytics and machine learning.
