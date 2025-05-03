@@ -120,7 +120,7 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
 - **AWS S3**:
   - Cleaned data is first uploaded to an S3 bucket for staging.
 <p align="center">
-  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/S3.png" width="100%" alt="airflow">
+  <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/S3.png" width="70%" alt="airflow">
 </p>
 
 
