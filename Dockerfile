@@ -82,14 +82,9 @@ ENV PATH=$JAVA_HOME/bin:$PATH
 
 USER airflow
 
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Cài các Python packages cần thiết
-RUN pip install --no-cache-dir \
-    selenium==4.9.1 \
-    beautifulsoup4==4.12.2 \
-    fake_useragent==1.1.3 \
-    webdriver-manager==3.8.6 \
-    kafka-python==2.0.2 
 # Thiết lập thư mục làm việc
 WORKDIR ${AIRFLOW_HOME}
 
