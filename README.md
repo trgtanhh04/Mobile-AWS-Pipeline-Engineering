@@ -137,7 +137,9 @@ run_crawl_data -> run_etl_mobile -> run_etl_aws
    </p>
   
     - **AWS Redshift**: As a data warehouse for advanced analytics and machine learning.
-
+   <p align="center">
+     <img src="https://raw.githubusercontent.com/trgtanhh04/Mobile-AWS-Pipeline-Engineering/main/imageForProject/redshift.png" width="80%" alt="airflow">
+   </p>
 
 ---
 
