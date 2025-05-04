@@ -29,7 +29,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.StreamHandler()  # Ghi log ra console
+        logging.StreamHandler()
     ]
 )
 
@@ -38,6 +38,7 @@ logger = logging.getLogger(__name__)
 
 from utils.constants import KAFKA_BOOTSTRAP_SERVERS, TOPIC_PHONE_DATA
 from utils.constants import INPUT_PATH, OUTPUT_PATH
+
 # ========== CONECT + EXTRACT DATA FROM KAFKA ==========
 def consume_from_kafka():
     """
@@ -173,20 +174,20 @@ def isOld(s):
 # Định nghĩa hàm cast_price
 def cast_price(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None 
     s = s.replace(".", "")
     numbers = re.findall(r'\d+', s)
     if len(numbers) == 0:
-        return None  # Tương đương với np.nan trong Pandas
+        return None 
     return int(numbers[0])
 
 # Định nghĩa hàm cast_warranty
 def cast_warranty(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None 
     numbers = re.findall(r'\d+', s)
     if len(numbers) == 0:
-        return None  # Tương đương với np.nan trong Pandas
+        return None  
     if len(numbers) == 1:
         if numbers[0] == "30":
             return 1
@@ -200,16 +201,16 @@ def cast_warranty(s):
 
 def cast_rating(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None 
     numbers = re.findall(r"-?\d+(?:\.\d+)?", s)
     if len(numbers) == 0:
-        return None  # Tương đương với np.nan trong Pandas
+        return None  
     return float(numbers[0])
 
 # Định nghĩa hàm cast_memory_version
 def cast_memory_version(s):
     if not isinstance(s, str):
-        return [None, None]  # Tương đương với [np.nan, np.nan]
+        return [None, None]  
     numbers = re.findall(r"-?\d+(?:\.\d+)?", s)
     if len(numbers) == 0:
         return [None, None]
@@ -224,7 +225,7 @@ def cast_memory_version(s):
 # Hàm xử lý RAM
 def firstNumberRAM(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None 
     numbers = re.findall(r"-?\d+(?:\.\d+)?", s)
     if len(numbers) == 0:
         return None
@@ -234,7 +235,7 @@ def firstNumberRAM(s):
 # Hàm xử lý ROM
 def firstNumberROM(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None 
     numbers = re.findall(r"-?\d+(?:\.\d+)?", s)
     if len(numbers) == 0:
         return None
@@ -290,7 +291,7 @@ def extractType(s):
 # Định nghĩa hàm extractSim
 def extractSim(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None  
     s = s.lower()
     if "2" in s or "dual" in s or "kép" in s:
         return 2
@@ -315,7 +316,7 @@ def batteryType(s):
 # Hàm trích xuất dung lượng pin
 def batteryCapacity(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None  
     s = s.lower()
     match = re.search(r"(\d+(\.\d+)?)\s*mah", s)
     result = float(match.group(1)) if match else None
@@ -324,7 +325,7 @@ def batteryCapacity(s):
 # Hàm trích xuất công suất sạc
 def chargingCapacity(s):
     if not isinstance(s, str):
-        return None  # Tương đương với np.nan trong Pandas
+        return None 
     s = s.lower()
     match = re.search(r"(\d+(\.\d+)?)\s*w", s)
     result = float(match.group(1)) if match else None
@@ -335,7 +336,7 @@ def chargingCapacity(s):
 # Hàm trích xuất độ phân giải camera
 def extractMP(s):
     if not isinstance(s, str):
-        return []  # Tương đương với danh sách trống
+        return [] 
     s = s.upper()
     matches = re.findall(r"(\d+(\.\d+)?)\s*MP", s)
     result = [float(match[0]) for match in matches]
