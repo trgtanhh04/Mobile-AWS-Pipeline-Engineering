@@ -5,13 +5,21 @@ database_port = 5432
 database_username = postgres
 database_password = postrgres
 
+[kafka]
+# localhost:9092
+kafka_bootstrap_servers = kafka:9092
+kafka_topic = mobile_topic
+kafka_group_id = mobile_group
+
+[airflow]
+airflow_home = /opt/airflow
+dags_folder = /opt/airflow/dags
+plugins_folder = /opt/airflow/plugins
+executor = LocalExecutor
+
 [file_paths]
 input_path = /opt/airflow/data/input
 output_path = /opt/airflow/data/output
-
-[api_keys]
-reddit_secret_key = "your reddit secret key"
-reddit_client_id = "your reddit client id"
 
 [aws]
 aws_access_key_id = "your aws_access_key_id"
@@ -23,3 +31,5 @@ aws_bucket_name = "your aws_bucket_name"
 batch_size = 100
 error_handling = abort
 log_level = info
+
+
